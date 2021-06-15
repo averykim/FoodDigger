@@ -11,6 +11,8 @@
 		2E34CED326780E32000E90A0 /* CuisineTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CED226780E32000E90A0 /* CuisineTypeViewController.swift */; };
 		2E34CED826780E34000E90A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E34CED726780E34000E90A0 /* Assets.xcassets */; };
 		2E34CEDB26780E34000E90A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E34CED926780E34000E90A0 /* LaunchScreen.storyboard */; };
+		2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEEB26786BCA000E90A0 /* Coordinator.swift */; };
+		2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		2E34CED726780E34000E90A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E34CEDA26780E34000E90A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E34CEDC26780E34000E90A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E34CEEB26786BCA000E90A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 		2E34CEE4267826CE000E90A0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 		2E34CEE726782760000E90A0 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -178,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineTypeViewController.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
+				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
