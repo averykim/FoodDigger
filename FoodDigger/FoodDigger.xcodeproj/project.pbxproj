@@ -18,6 +18,8 @@
 		2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF62679CA55000E90A0 /* LayoutAnchor.swift */; };
 		2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF82679CAAA000E90A0 /* UIView+LayoutAnchor.swift */; };
 		2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFA2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift */; };
+		2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */; };
+		2E34CEFF2679DDD2000E90A0 /* CuisinesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		2E34CEF62679CA55000E90A0 /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		2E34CEF82679CAAA000E90A0 /* UIView+LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutAnchor.swift"; sourceTree = "<group>"; };
 		2E34CEFA2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+LayoutAnchor.swift"; sourceTree = "<group>"; };
+		2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
+				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
+				2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -209,9 +215,11 @@
 			files = (
 				2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */,
 				2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */,
+				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisinesListViewController.swift in Sources */,
+				2E34CEFF2679DDD2000E90A0 /* CuisinesListCoordinator.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisinesListView.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
 				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
