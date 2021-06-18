@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  FoodDigger
+
+  Created by JihyeKim on 2021/06/18.
+  
+*/
+
+"korean" = "한식";
+"european" = "양식";
+"japanese" = "일식";
+"chinese" = "중식";
+"southeastAsian" = "동남아";
+"vegan" = "채식";
+"dessert" = "디저트";

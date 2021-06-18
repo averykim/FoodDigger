@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  FoodDigger
+
+  Created by JihyeKim on 2021/06/18.
+  
+*/
+
+"korean" = "Korean";
+"european" = "European";
+"japanese" = "Japanese";
+"chinese" = "Chinese";
+"southeastAsian" = "Southeast Asian";
+"vegan" = "Vegan";
+"dessert" = "Dessert";
