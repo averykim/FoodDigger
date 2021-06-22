@@ -21,7 +21,6 @@ class CuisinesListView: UIView {
         logo.textAlignment = .center
         logo.textColor = .brown
         addSubview(logo, anchors: [.top(100), .centerX(0), .width(100), .height(50)])
-
         addSubview(collectionView, anchors: [.top(200), .trailing(-10),
                                              .leading(10), .height(UIScreen.main.bounds.height / 2)])
     }
@@ -53,7 +52,7 @@ class CuisineCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .yellow
-
+        layer.borderWidth = 2
         addSubview(thumbnail, anchors: [.centerX(0), .centerY(0), .width(frame.size.width)])
         thumbnail.textColor = .black
         thumbnail.textAlignment = .center

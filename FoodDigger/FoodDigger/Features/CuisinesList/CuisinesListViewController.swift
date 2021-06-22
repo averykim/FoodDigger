@@ -35,14 +35,15 @@ class CuisinesListViewController: UIViewController {
 
 extension CuisinesListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return CuisineType.cases.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuisineCell",
                                                             for: indexPath) as? CuisineCell else { return UICollectionViewCell() }
 
-        cell.thumbnail.text = "\(indexPath.row)"
+        let cuisineType = NSLocalizedString(CuisineType.cases[indexPath.row].rawValue, comment: "")
+        cell.thumbnail.text = "\(cuisineType)"
         return cell
     }
 }

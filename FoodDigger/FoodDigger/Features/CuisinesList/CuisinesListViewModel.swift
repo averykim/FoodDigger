@@ -13,4 +13,20 @@ protocol CuisinesListViewModelDelegate: AnyObject {
 class CuisinesListViewModel {
 
     weak var delegate: CuisinesListViewModelDelegate?
+
+    var cuisines = [CuisineType: String]()
+    subscript(type: CuisineType) -> String? {
+        get {
+            return cuisines[type]
+        }
+        set(newType) {
+            return cuisines[type] = newType
+        }
+    }
+
+    init() {
+        for type in CuisineType.cases {
+            cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
+        }
+    }
 }
