@@ -29,4 +29,12 @@ class CuisinesListViewModel {
             cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
         }
     }
+
+    func changeCuisinesState(type: CuisineType) {
+        if cuisines[type] != nil {
+            cuisines.removeValue(forKey: type)
+        } else {
+            cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
+        }
+    }
 }

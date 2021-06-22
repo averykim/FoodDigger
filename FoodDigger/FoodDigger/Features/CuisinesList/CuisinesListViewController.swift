@@ -44,6 +44,18 @@ extension CuisinesListViewController: UICollectionViewDelegate, UICollectionView
 
         let cuisineType = NSLocalizedString(CuisineType.cases[indexPath.row].rawValue, comment: "")
         cell.thumbnail.text = "\(cuisineType)"
+
+        if viewModel.cuisines[CuisineType.cases[indexPath.row]] == cuisineType {
+            cell.layer.borderColor = UIColor.red.cgColor
+        } else {
+            cell.layer.borderColor = UIColor.clear.cgColor
+        }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectType = CuisineType.cases[indexPath.row]
+        viewModel.changeCuisinesState(type: selectType)
+        collectionView.reloadData()
     }
 }
