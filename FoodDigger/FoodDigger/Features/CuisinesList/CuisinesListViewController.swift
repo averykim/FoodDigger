@@ -15,6 +15,8 @@ class CuisinesListViewController: UIViewController {
     init(viewModel: CuisinesListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        cuisinesListView.collectionView.delegate = self
+        cuisinesListView.collectionView.dataSource = self
     }
 
     override func loadView() {
@@ -31,3 +33,16 @@ class CuisinesListViewController: UIViewController {
     }
 }
 
+extension CuisinesListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuisineCell",
+                                                            for: indexPath) as? CuisineCell else { return UICollectionViewCell() }
+
+        cell.thumbnail.text = "\(indexPath.row)"
+        return cell
+    }
+}
