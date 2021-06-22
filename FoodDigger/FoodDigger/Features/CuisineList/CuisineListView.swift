@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CuisinesListView: UIView {
+class CuisineListView: UIView {
 
     let collectionView = CuisineCollectionView(frame: .zero,
                                                            collectionViewLayout: UICollectionViewFlowLayout())

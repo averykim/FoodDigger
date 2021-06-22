@@ -7,21 +7,21 @@
 
 import UIKit
 
-class CuisinesListViewController: UIViewController {
+class CuisineListViewController: UIViewController {
 
-    let cuisinesListView = CuisinesListView()
-    let viewModel: CuisinesListViewModel
+    let cuisineListView = CuisineListView()
+    let viewModel: CuisineListViewModel
 
-    init(viewModel: CuisinesListViewModel) {
+    init(viewModel: CuisineListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        cuisinesListView.collectionView.delegate = self
-        cuisinesListView.collectionView.dataSource = self
+        cuisineListView.collectionView.delegate = self
+        cuisineListView.collectionView.dataSource = self
     }
 
     override func loadView() {
         super.loadView()
-        view = cuisinesListView
+        view = cuisineListView
     }
 
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class CuisinesListViewController: UIViewController {
     }
 }
 
-extension CuisinesListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CuisineListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return CuisineType.cases.count
     }

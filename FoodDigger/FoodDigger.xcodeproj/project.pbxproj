@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CECE26780E32000E90A0 /* AppDelegate.swift */; };
-		2E34CED326780E32000E90A0 /* CuisinesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CED226780E32000E90A0 /* CuisinesListViewController.swift */; };
+		2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CED226780E32000E90A0 /* CuisineListViewController.swift */; };
 		2E34CED826780E34000E90A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E34CED726780E34000E90A0 /* Assets.xcassets */; };
 		2E34CEDB26780E34000E90A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E34CED926780E34000E90A0 /* LaunchScreen.storyboard */; };
 		2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEEB26786BCA000E90A0 /* Coordinator.swift */; };
 		2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */; };
-		2E34CEF22679C97F000E90A0 /* CuisinesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF12679C97F000E90A0 /* CuisinesListView.swift */; };
-		2E34CEF42679C989000E90A0 /* CuisinesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF32679C989000E90A0 /* CuisinesListViewModel.swift */; };
+		2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF12679C97F000E90A0 /* CuisineListView.swift */; };
+		2E34CEF42679C989000E90A0 /* CuisineListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF32679C989000E90A0 /* CuisineListViewModel.swift */; };
 		2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF62679CA55000E90A0 /* LayoutAnchor.swift */; };
 		2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEF82679CAAA000E90A0 /* UIView+LayoutAnchor.swift */; };
 		2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFA2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift */; };
 		2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */; };
-		2E34CEFF2679DDD2000E90A0 /* CuisinesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */; };
+		2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */; };
 		2E921A5A267C96CD00E7331A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E921A58267C96CD00E7331A /* Localizable.strings */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
 /* End PBXBuildFile section */
@@ -27,19 +27,19 @@
 /* Begin PBXFileReference section */
 		2E34CECB26780E32000E90A0 /* FoodDigger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDigger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E34CECE26780E32000E90A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2E34CED226780E32000E90A0 /* CuisinesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesListViewController.swift; sourceTree = "<group>"; };
+		2E34CED226780E32000E90A0 /* CuisineListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineListViewController.swift; sourceTree = "<group>"; };
 		2E34CED726780E34000E90A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E34CEDA26780E34000E90A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E34CEDC26780E34000E90A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E34CEEB26786BCA000E90A0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDictionary.swift; sourceTree = "<group>"; };
-		2E34CEF12679C97F000E90A0 /* CuisinesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesListView.swift; sourceTree = "<group>"; };
-		2E34CEF32679C989000E90A0 /* CuisinesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesListViewModel.swift; sourceTree = "<group>"; };
+		2E34CEF12679C97F000E90A0 /* CuisineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineListView.swift; sourceTree = "<group>"; };
+		2E34CEF32679C989000E90A0 /* CuisineListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineListViewModel.swift; sourceTree = "<group>"; };
 		2E34CEF62679CA55000E90A0 /* LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAnchor.swift; sourceTree = "<group>"; };
 		2E34CEF82679CAAA000E90A0 /* UIView+LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutAnchor.swift"; sourceTree = "<group>"; };
 		2E34CEFA2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+LayoutAnchor.swift"; sourceTree = "<group>"; };
 		2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesListCoordinator.swift; sourceTree = "<group>"; };
+		2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineListCoordinator.swift; sourceTree = "<group>"; };
 		2E921A54267C962E00E7331A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2E921A59267C96CD00E7331A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = FoodDigger/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		2E921A5B267C96DB00E7331A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ../ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		2E34CEE5267826E2000E90A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				2E34CEEA267853DA000E90A0 /* CuisinesList */,
+				2E34CEEA267853DA000E90A0 /* CuisineList */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -127,19 +127,19 @@
 			children = (
 				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
 				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
-				2E34CEFE2679DDD2000E90A0 /* CuisinesListCoordinator.swift */,
+				2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		2E34CEEA267853DA000E90A0 /* CuisinesList */ = {
+		2E34CEEA267853DA000E90A0 /* CuisineList */ = {
 			isa = PBXGroup;
 			children = (
-				2E34CEF32679C989000E90A0 /* CuisinesListViewModel.swift */,
-				2E34CED226780E32000E90A0 /* CuisinesListViewController.swift */,
-				2E34CEF12679C97F000E90A0 /* CuisinesListView.swift */,
+				2E34CEF32679C989000E90A0 /* CuisineListViewModel.swift */,
+				2E34CED226780E32000E90A0 /* CuisineListViewController.swift */,
+				2E34CEF12679C97F000E90A0 /* CuisineListView.swift */,
 			);
-			path = CuisinesList;
+			path = CuisineList;
 			sourceTree = "<group>";
 		};
 		2E34CEF52679CA38000E90A0 /* AutoLayout */ = {
@@ -228,12 +228,12 @@
 				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
-				2E34CED326780E32000E90A0 /* CuisinesListViewController.swift in Sources */,
-				2E34CEFF2679DDD2000E90A0 /* CuisinesListCoordinator.swift in Sources */,
-				2E34CEF22679C97F000E90A0 /* CuisinesListView.swift in Sources */,
+				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
+				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
+				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
 				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
-				2E34CEF42679C989000E90A0 /* CuisinesListViewModel.swift in Sources */,
+				2E34CEF42679C989000E90A0 /* CuisineListViewModel.swift in Sources */,
 				2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

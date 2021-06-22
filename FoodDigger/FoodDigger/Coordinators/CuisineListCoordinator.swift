@@ -10,12 +10,12 @@ import Foundation
 class CuisinesListCoordinator: Coordinator {
 
     func start() {
-        let cuisinesViewModel = CuisinesListViewModel()
-        let cuisinesViewController = CuisinesListViewController(viewModel: cuisinesViewModel)
+        let cuisinesViewModel = CuisineListViewModel()
+        let cuisinesViewController = CuisineListViewController(viewModel: cuisinesViewModel)
         cuisinesViewModel.delegate = self
         navigationController.pushViewController(cuisinesViewController, animated: true)
     }
 }
 
-extension CuisinesListCoordinator: CuisinesListViewModelDelegate {
+extension CuisinesListCoordinator: CuisineListViewModelDelegate {
 }

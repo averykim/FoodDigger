@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol CuisinesListViewModelDelegate: AnyObject {
+protocol CuisineListViewModelDelegate: AnyObject {
 }
 
-class CuisinesListViewModel {
+class CuisineListViewModel {
 
-    weak var delegate: CuisinesListViewModelDelegate?
+    weak var delegate: CuisineListViewModelDelegate?
 
     var cuisines = [CuisineType: String]()
     subscript(type: CuisineType) -> String? {
