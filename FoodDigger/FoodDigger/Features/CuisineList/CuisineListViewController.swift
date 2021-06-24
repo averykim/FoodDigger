@@ -15,6 +15,7 @@ class CuisineListViewController: UIViewController {
     init(viewModel: CuisineListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        cuisineListView.delegate = self
         cuisineListView.collectionView.delegate = self
         cuisineListView.collectionView.dataSource = self
     }
@@ -30,6 +31,12 @@ class CuisineListViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension CuisineListViewController: CuisineListViewDelegate {
+    func didPressNextButton(sender: UIButton) {
+        viewModel.moveToFoodListView()
     }
 }
 

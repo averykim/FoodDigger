@@ -8,6 +8,7 @@
 import Foundation
 
 protocol CuisineListViewModelDelegate: AnyObject {
+    func goToFoodListView(cuisine: String)
 }
 
 class CuisineListViewModel {
@@ -31,10 +32,16 @@ class CuisineListViewModel {
     }
 
     func changeCuisinesState(type: CuisineType) {
-        if cuisines[type] != nil {
+        if cuisines[type] != nil && cuisines.count != 1 {
             cuisines.removeValue(forKey: type)
         } else {
             cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
+        }
+    }
+
+    func moveToFoodListView() {
+        if let randomValue = cuisines.randomElement()?.value {
+            delegate?.goToFoodListView(cuisine: randomValue)
         }
     }
 }

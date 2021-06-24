@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol CuisineListViewDelegate: AnyObject {
+    func didPressNextButton(sender: UIButton)
+}
+
 class CuisineListView: UIView {
 
+    weak var delegate: CuisineListViewDelegate?
     let collectionView = CuisineCollectionView(frame: .zero,
                                                            collectionViewLayout: UICollectionViewFlowLayout())
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
@@ -23,7 +27,18 @@ class CuisineListView: UIView {
         addSubview(logo, anchors: [.top(100), .centerX(0), .width(100), .height(50)])
         addSubview(collectionView, anchors: [.top(200), .trailing(-10),
                                              .leading(10), .height(UIScreen.main.bounds.height / 2)])
+        let nextButton = UIButton()
+        nextButton.backgroundColor = .purple
+        addSubview(nextButton, anchors: [.trailing(-50), .leading(50)])
+        nextButton.attach(.top, to: collectionView, constant: 50)
+        nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
     }
+
+    @objc
+    func pressNextButton(sender: UIButton) {
+        delegate?.didPressNextButton(sender: sender)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

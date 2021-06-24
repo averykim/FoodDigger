@@ -18,4 +18,24 @@ extension UIView {
         let constraints = anchors.map { NSLayoutConstraint(from: self, to: item, anchor: $0) }
         NSLayoutConstraint.activate(constraints)
     }
+
+    enum AttachPositon {
+        case top
+        case trailing
+        case bottom
+        case leading
+    }
+
+    func attach(_ position: AttachPositon, to ofElement: UIView, constant: CGFloat = 0) {
+        switch position {
+        case .top:
+            bottomAnchor.constraint(equalTo: ofElement.bottomAnchor, constant: constant).isActive = true
+        case .trailing:
+            leadingAnchor.constraint(equalTo: ofElement.leadingAnchor, constant: constant).isActive = true
+        case .bottom:
+            topAnchor.constraint(equalTo: ofElement.topAnchor, constant: constant).isActive = true
+        case .leading:
+            trailingAnchor.constraint(equalTo: ofElement.trailingAnchor, constant: constant).isActive = true
+        }
+    }
 }
