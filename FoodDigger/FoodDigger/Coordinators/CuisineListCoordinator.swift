@@ -18,6 +18,11 @@ class CuisinesListCoordinator: Coordinator {
 }
 
 extension CuisinesListCoordinator: CuisineListViewModelDelegate {
+    func goToHelpView() {
+        // Add help page coordinator
+        print("Add help page")
+    }
+    
     func goToFoodListView(cuisine: String) {
         // Add next view's coordinator
         print("value: \(cuisine)")

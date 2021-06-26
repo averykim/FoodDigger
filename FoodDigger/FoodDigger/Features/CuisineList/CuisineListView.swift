@@ -8,6 +8,7 @@
 import UIKit
 
 protocol CuisineListViewDelegate: AnyObject {
+    func didPressHelpButton(sender: UIButton)
     func didPressNextButton(sender: UIButton)
 }
 
@@ -19,6 +20,12 @@ class CuisineListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
+
+        let helpButton = UIButton()
+        helpButton.backgroundColor = .darkGray
+        helpButton.layer.cornerRadius = 10
+        addSubview(helpButton, anchors: [.top(50), .trailing(-30)])
+        helpButton.addTarget(self, action: #selector(pressHelpButton), for: .touchUpInside)
 
         let logo = UILabel()
         logo.text = "Food Digger"
@@ -32,6 +39,11 @@ class CuisineListView: UIView {
         addSubview(nextButton, anchors: [.trailing(-50), .leading(50)])
         nextButton.attach(.top, to: collectionView, constant: 50)
         nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
+    }
+
+    @objc
+    func pressHelpButton(sender: UIButton) {
+        delegate?.didPressHelpButton(sender: sender)
     }
 
     @objc

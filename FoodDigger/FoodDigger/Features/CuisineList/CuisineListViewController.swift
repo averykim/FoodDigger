@@ -35,6 +35,10 @@ class CuisineListViewController: UIViewController {
 }
 
 extension CuisineListViewController: CuisineListViewDelegate {
+    func didPressHelpButton(sender: UIButton) {
+        viewModel.moveToHelpView()
+    }
+
     func didPressNextButton(sender: UIButton) {
         viewModel.moveToFoodListView()
     }

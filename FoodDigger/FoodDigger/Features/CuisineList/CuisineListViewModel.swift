@@ -8,6 +8,7 @@
 import Foundation
 
 protocol CuisineListViewModelDelegate: AnyObject {
+    func goToHelpView()
     func goToFoodListView(cuisine: String)
 }
 
@@ -37,6 +38,10 @@ class CuisineListViewModel {
         } else {
             cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
         }
+    }
+
+    func moveToHelpView() {
+        delegate?.goToHelpView()
     }
 
     func moveToFoodListView() {
