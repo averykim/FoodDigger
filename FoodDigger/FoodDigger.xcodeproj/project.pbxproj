@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1A03A6268AE82300B25CD1 /* FoodListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A03A5268AE82300B25CD1 /* FoodListCoordinator.swift */; };
+		2E1A03A9268AE85800B25CD1 /* FoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A03A8268AE85800B25CD1 /* FoodListView.swift */; };
+		2E1A03AB268AE86400B25CD1 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A03AA268AE86400B25CD1 /* FoodListViewController.swift */; };
+		2E1A03AD268AE87100B25CD1 /* FoodListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A03AC268AE87100B25CD1 /* FoodListViewModel.swift */; };
 		2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CECE26780E32000E90A0 /* AppDelegate.swift */; };
 		2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CED226780E32000E90A0 /* CuisineListViewController.swift */; };
 		2E34CED826780E34000E90A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E34CED726780E34000E90A0 /* Assets.xcassets */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1A03A5268AE82300B25CD1 /* FoodListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListCoordinator.swift; sourceTree = "<group>"; };
+		2E1A03A8268AE85800B25CD1 /* FoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListView.swift; sourceTree = "<group>"; };
+		2E1A03AA268AE86400B25CD1 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
+		2E1A03AC268AE87100B25CD1 /* FoodListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewModel.swift; sourceTree = "<group>"; };
 		2E34CECB26780E32000E90A0 /* FoodDigger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDigger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E34CECE26780E32000E90A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E34CED226780E32000E90A0 /* CuisineListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineListViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1A03A7268AE84700B25CD1 /* FoodList */ = {
+			isa = PBXGroup;
+			children = (
+				2E1A03AC268AE87100B25CD1 /* FoodListViewModel.swift */,
+				2E1A03AA268AE86400B25CD1 /* FoodListViewController.swift */,
+				2E1A03A8268AE85800B25CD1 /* FoodListView.swift */,
+			);
+			path = FoodList;
+			sourceTree = "<group>";
+		};
 		2E34CEC226780E32000E90A0 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				2E34CEEA267853DA000E90A0 /* CuisineList */,
+				2E1A03A7268AE84700B25CD1 /* FoodList */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -128,6 +147,7 @@
 				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
 				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
 				2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */,
+				2E1A03A5268AE82300B25CD1 /* FoodListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -225,8 +245,12 @@
 			files = (
 				2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */,
 				2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */,
+				2E1A03AD268AE87100B25CD1 /* FoodListViewModel.swift in Sources */,
+				2E1A03A9268AE85800B25CD1 /* FoodListView.swift in Sources */,
+				2E1A03A6268AE82300B25CD1 /* FoodListCoordinator.swift in Sources */,
 				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
+				2E1A03AB268AE86400B25CD1 /* FoodListViewController.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
 				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
