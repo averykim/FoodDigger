@@ -8,6 +8,7 @@
 import Foundation
 
 protocol FoodListViewModelDelegate: AnyObject {
+    func goToCuisineListView()
 }
 
 class FoodListViewModel {
@@ -18,5 +19,9 @@ class FoodListViewModel {
 
     init(cuisine: String) {
         self.cuisineName = cuisine
+    }
+
+    func moveToCuisineListView() {
+        delegate?.goToCuisineListView()
     }
 }

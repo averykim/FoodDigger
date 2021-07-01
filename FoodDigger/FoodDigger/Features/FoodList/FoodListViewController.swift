@@ -34,4 +34,7 @@ class FoodListViewController: UIViewController {
 }
 
 extension FoodListViewController: FoodListViewDelegate {
+    func didPressHomeButton(sender: UIButton) {
+        viewModel.moveToCuisineListView()
+    }
 }

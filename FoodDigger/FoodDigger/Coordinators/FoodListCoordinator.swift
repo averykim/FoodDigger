@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol FoodListCoordinatorDelegate: AnyObject {
+    func foodListCoordinatorDidFinish()
+}
+
 class FoodListCoordinator: Coordinator {
 
+    weak var delegate: FoodListCoordinatorDelegate?
     let cuisine: String
 
     init(navigationController: UINavigationController, cuisine: String) {
@@ -25,4 +30,8 @@ class FoodListCoordinator: Coordinator {
 }
 
 extension FoodListCoordinator: FoodListViewModelDelegate {
+    func goToCuisineListView() {
+        navigationController.popToRootViewController(animated: true)
+        delegate?.foodListCoordinatorDidFinish()
+    }
 }
