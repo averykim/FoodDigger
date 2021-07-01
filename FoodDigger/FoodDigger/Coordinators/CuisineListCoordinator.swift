@@ -24,7 +24,8 @@ extension CuisinesListCoordinator: CuisineListViewModelDelegate {
     }
     
     func goToFoodListView(cuisine: String) {
-        let foodListCoordinator = FoodListCoordinator(navigationController: navigationController)
+        let foodListCoordinator = FoodListCoordinator(navigationController: navigationController,
+                                                      cuisine: cuisine)
         childCoordinators[FoodListCoordinator] = foodListCoordinator
         foodListCoordinator.start()
     }

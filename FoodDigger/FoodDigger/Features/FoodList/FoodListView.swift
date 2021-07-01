@@ -14,14 +14,15 @@ class FoodListView: UIView {
 
     weak var delegate: FoodListViewDelegate?
 
+    let title = UILabel()
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
 
-        let title = UILabel()
-        title.text = "Food List"
         title.textAlignment = .center
         title.textColor = .brown
+        title.numberOfLines = 2
         addSubview(title, anchors: [.top(50), .centerX(0), .width(100), .height(50)])
     }
 

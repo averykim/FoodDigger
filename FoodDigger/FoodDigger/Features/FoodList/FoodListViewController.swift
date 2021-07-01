@@ -29,6 +29,7 @@ class FoodListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        foodListView.title.text = viewModel.cuisineName
     }
 }
 

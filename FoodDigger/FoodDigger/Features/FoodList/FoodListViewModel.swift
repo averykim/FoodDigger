@@ -14,4 +14,9 @@ class FoodListViewModel {
 
     weak var delegate: FoodListViewModelDelegate?
 
+    let cuisineName: String
+
+    init(cuisine: String) {
+        self.cuisineName = cuisine
+    }
 }
