@@ -28,6 +28,8 @@
 		2E921A5A267C96CD00E7331A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E921A58267C96CD00E7331A /* Localizable.strings */; };
 		2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */; };
 		2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85E26A6A3D700E99ADA /* Network.swift */; };
+		2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */; };
+		2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */; };
 		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
@@ -58,6 +60,8 @@
 		2E921A5B267C96DB00E7331A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ../ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 		2E9FA85E26A6A3D700E99ADA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpModel.swift; sourceTree = "<group>"; };
+		2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoModel.swift; sourceTree = "<group>"; };
 		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */,
+				2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */,
+				2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */,
+				2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */,
 				2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */,
 				2E1A03AD268AE87100B25CD1 /* FoodListViewModel.swift in Sources */,
 				2E1A03A9268AE85800B25CD1 /* FoodListView.swift in Sources */,
@@ -350,6 +357,7 @@
 				2E1A03AB268AE86400B25CD1 /* FoodListViewController.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
 				2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */,
+				2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
 				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
