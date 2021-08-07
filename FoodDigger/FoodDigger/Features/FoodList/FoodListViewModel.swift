@@ -9,6 +9,7 @@ import Foundation
 
 protocol FoodListViewModelDelegate: AnyObject {
     func goToCuisineListView()
+    func goToMapModal(info: [MapInfoModel])
 }
 
 class FoodListViewModel {
@@ -73,6 +74,7 @@ class FoodListViewModel {
         network.send(request) { (result: Result<KakaoModel, Error>) in
             do {
                 let data = try result.get()
+                print("data count: \(data.documents.count)")
                 for restaurant in data.documents {
                     self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
                                                             name: restaurant.place_name,
@@ -87,5 +89,9 @@ class FoodListViewModel {
 
     func moveToCuisineListView() {
         delegate?.goToCuisineListView()
+    }
+
+    func moveToMapView() {
+        delegate?.goToMapModal(info: restaurantInfo)
     }
 }

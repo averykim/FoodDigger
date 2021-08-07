@@ -9,6 +9,7 @@ import UIKit
 
 protocol FoodListViewDelegate: AnyObject {
     func didPressHomeButton(sender: UIButton)
+    func didPressMapButton(sender: UIButton)
 }
 
 class FoodListView: UIView {
@@ -31,11 +32,22 @@ class FoodListView: UIView {
         homeButton.layer.cornerRadius = 10
         homeButton.backgroundColor = .systemPink
         homeButton.addTarget(self, action: #selector(pressHomeButton), for: .touchUpInside)
+
+        let mapButton = UIButton()
+        addSubview(mapButton, anchors: [.top(50), .trailing(-30), .width(40), .height(40)])
+        mapButton.layer.cornerRadius = 10
+        mapButton.backgroundColor = .systemPink
+        mapButton.addTarget(self, action: #selector(pressMapButton), for: .touchUpInside)
     }
 
     @objc
     func pressHomeButton(sender: UIButton) {
         delegate?.didPressHomeButton(sender: sender)
+    }
+
+    @objc
+    func pressMapButton(sender: UIButton) {
+        delegate?.didPressMapButton(sender: sender)
     }
 
     required init?(coder: NSCoder) {

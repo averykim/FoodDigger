@@ -30,6 +30,11 @@ class FoodListCoordinator: Coordinator {
 }
 
 extension FoodListCoordinator: FoodListViewModelDelegate {
+    func goToMapModal(info: [MapInfoModel]) {
+        //add map modal coordinator
+        print("map modal")
+    }
+
     func goToCuisineListView() {
         navigationController.popToRootViewController(animated: true)
         delegate?.foodListCoordinatorDidFinish()

@@ -41,6 +41,10 @@ class FoodListViewController: UIViewController {
 }
 
 extension FoodListViewController: FoodListViewDelegate {
+    func didPressMapButton(sender: UIButton) {
+        viewModel.moveToMapView()
+    }
+
     func didPressHomeButton(sender: UIButton) {
         viewModel.moveToCuisineListView()
     }
