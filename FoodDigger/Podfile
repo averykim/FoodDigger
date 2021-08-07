@@ -6,6 +6,6 @@ target 'FoodDigger' do
   use_frameworks!
 
   # Pods for FoodDigger
-  pod 'GoogleMaps', '5.0.0'
+  pod 'GoogleMaps'
 
 end

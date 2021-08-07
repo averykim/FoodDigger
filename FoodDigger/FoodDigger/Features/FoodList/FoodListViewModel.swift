@@ -18,9 +18,11 @@ class FoodListViewModel {
     let cuisineName: String
     let network = Network()
     let privateKey = PrivateKey()
+    var restaurantInfo: [MapInfoModel]
 
     init(cuisine: String) {
         self.cuisineName = cuisine
+        restaurantInfo = []
     }
 
     func callYelpAPI() {
@@ -29,7 +31,7 @@ class FoodListViewModel {
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: "37.786882"),
             URLQueryItem(name: "longitude", value: "-122.399972"),
-            URLQueryItem(name: "radius", value: "20000"),
+            URLQueryItem(name: "radius", value: "2000"),
             URLQueryItem(name: "term", value: cuisineName)
         ]
         guard let yelpURL = urlComponents?.url else {
@@ -39,7 +41,17 @@ class FoodListViewModel {
         request.setValue("Bearer \(privateKey.yelpApi)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         network.send(request) { (result: Result<YelpModel, Error>) in
-            print("data: \(result)")
+            do {
+                let data = try result.get()
+                for restaurant in data.businesses {
+                    self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
+                                                            name: restaurant.name,
+                                                            latitude: restaurant.coordinates.latitude ?? 0.0,
+                                                            logitude: restaurant.coordinates.longitude ?? 0.0))
+                }
+            } catch {
+                print("error: \(error)")
+            }
         }
     }
 
@@ -49,8 +61,8 @@ class FoodListViewModel {
         urlComponents?.queryItems = [
             URLQueryItem(name: "y", value: "37.514322572335935"),
             URLQueryItem(name: "x", value: "127.06283102249932"),
-            URLQueryItem(name: "radius", value: "20000"),
-            URLQueryItem(name: "query", value: cuisineName)
+            URLQueryItem(name: "radius", value: "2000"),
+            URLQueryItem(name: "query", value: NSLocalizedString(cuisineName, comment: ""))
         ]
         guard let kakaoURL = urlComponents?.url else {
             return
@@ -59,9 +71,18 @@ class FoodListViewModel {
         request.setValue(privateKey.kakaoApi, forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         network.send(request) { (result: Result<KakaoModel, Error>) in
-            print("data: \(result)")
+            do {
+                let data = try result.get()
+                for restaurant in data.documents {
+                    self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
+                                                            name: restaurant.place_name,
+                                                            latitude: Double(restaurant.x ?? "") ?? 0.0,
+                                                            logitude: Double(restaurant.y ?? "") ?? 0.0))
+                }
+            } catch {
+                print("error: \(error)")
+            }
         }
-
     }
 
     func moveToCuisineListView() {

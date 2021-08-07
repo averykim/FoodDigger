@@ -11,6 +11,7 @@ class FoodListViewController: UIViewController {
 
     let foodListView = FoodListView()
     let viewModel: FoodListViewModel
+    private let countryCode = NSLocale.current.regionCode
 
     init(viewModel: FoodListViewModel) {
         self.viewModel = viewModel
@@ -30,6 +31,12 @@ class FoodListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         foodListView.title.text = viewModel.cuisineName
+        guard let country = countryCode else { return }
+        if country == "US" {
+            viewModel.callYelpAPI()
+        } else {
+            viewModel.callKakaoAPI()
+        }
     }
 }
 

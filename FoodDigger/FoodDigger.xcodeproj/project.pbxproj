@@ -30,6 +30,7 @@
 		2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85E26A6A3D700E99ADA /* Network.swift */; };
 		2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */; };
 		2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */; };
+		2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */; };
 		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
@@ -62,6 +63,7 @@
 		2E9FA85E26A6A3D700E99ADA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpModel.swift; sourceTree = "<group>"; };
 		2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoModel.swift; sourceTree = "<group>"; };
+		2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfoModel.swift; sourceTree = "<group>"; };
 		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */,
 				2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */,
 				2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */,
+				2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
 				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
+				2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
 				2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */,
