@@ -11,10 +11,14 @@ protocol FoodListViewModelDelegate: AnyObject {
     func goToCuisineListView()
     func goToMapModal(info: [MapInfoModel])
 }
+protocol FoodListViewModelObserver: AnyObject {
+    func updateSelectedInfo()
+}
 
 class FoodListViewModel {
 
     weak var delegate: FoodListViewModelDelegate?
+    weak var observer: FoodListViewModelObserver?
 
     let cuisineName: String
     let network = Network()
@@ -102,5 +106,11 @@ class FoodListViewModel {
             return
         }
         selectedRestaurant.append(menu)
+        observer?.updateSelectedInfo()
+    }
+
+    func deleteMenu(menuIndex: Int) {
+        selectedRestaurant.remove(at: menuIndex)
+        observer?.updateSelectedInfo()
     }
 }

@@ -18,6 +18,9 @@ class FoodListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         foodListView.delegate = self
         foodListView.textField.delegate = self
+        foodListView.restuarantList.delegate = self
+        foodListView.restuarantList.dataSource = self
+        viewModel.observer = self
     }
 
     required init?(coder: NSCoder) {
@@ -59,5 +62,38 @@ extension FoodListViewController: FoodListViewDelegate, UITextFieldDelegate {
         textField.endEditing(true)
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension FoodListViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.selectedRestaurant.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width - 20, height: 60)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? RestaurantListCell else {
+            return UICollectionViewCell()
+        }
+        cell.nameLabel.text = "\(viewModel.selectedRestaurant[indexPath.row])"
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
+        return cell
+    }
+
+    @objc
+    func deleteCell(sender: UIButton) {
+        viewModel.deleteMenu(menuIndex: sender.tag)
+    }
+}
+
+extension FoodListViewController: FoodListViewModelObserver {
+    func updateSelectedInfo() {
+        foodListView.restuarantList.reloadData()
     }
 }

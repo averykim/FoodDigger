@@ -20,6 +20,7 @@ class FoodListView: UIView {
     let title = UILabel()
     let header = HeaderStackView()
     let textField = UITextField()
+    let restuarantList = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -61,6 +62,19 @@ class FoodListView: UIView {
         addButton.setImage(UIImage(named: "textAdd"), for: .normal)
         textfieldBackgound.addSubview(addButton, anchors: [.top(10), .trailing(-20), .width(35), .height(35)])
         addButton.addTarget(self, action: #selector(pressAddButton), for: .touchUpInside)
+
+        let nextButton = UIButton()
+        addSubview(nextButton, anchors: [.trailing(-50), .bottom(-40), .leading(50)])
+        nextButton.backgroundColor = .black
+        nextButton.setTitle("NEXT", for: .normal)
+        nextButton.setTitleColor(.white, for: .normal)
+
+        // list collection view
+        addSubview(restuarantList, anchors: [.leading(10), .trailing(-10)])
+        restuarantList.attach(.bottom, to: textField, constant: 60)
+        restuarantList.attach(.top, to: nextButton, constant: -40)
+        restuarantList.backgroundColor = .clear
+        restuarantList.register(RestaurantListCell.self, forCellWithReuseIdentifier: "customCell")
     }
 
     @objc
@@ -97,6 +111,32 @@ class HeaderStackView: UIStackView {
     }
 
     required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class RestaurantListCell: UICollectionViewCell {
+
+    let nameLabel =  UILabel()
+    let deleteButton = UIButton()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
+        nameLabel.textAlignment = .left
+        nameLabel.textColor = .black
+        addSubview(nameLabel, anchors: [.centerX(0), .centerY(0)])
+
+        deleteButton.setImage(UIImage(named: "close"), for: .normal)
+        addSubview(deleteButton, anchors: [.top(10), .trailing(-20), .width(33), .height(33)])
+
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 0.6
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 2
+    }
+
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
