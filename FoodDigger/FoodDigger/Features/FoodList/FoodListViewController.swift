@@ -17,6 +17,7 @@ class FoodListViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         foodListView.delegate = self
+        foodListView.textField.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -40,12 +41,23 @@ class FoodListViewController: UIViewController {
     }
 }
 
-extension FoodListViewController: FoodListViewDelegate {
+extension FoodListViewController: FoodListViewDelegate, UITextFieldDelegate {
     func didPressMapButton(sender: UIButton) {
         viewModel.moveToMapView()
     }
 
     func didPressHomeButton(sender: UIButton) {
         viewModel.moveToCuisineListView()
+    }
+
+    func didPressAddButton(sender: UIButton) {
+        viewModel.addMenu(text: foodListView.textField.text)
+        foodListView.textField.text = nil
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        textField.resignFirstResponder()
+        return true
     }
 }

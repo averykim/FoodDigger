@@ -10,6 +10,7 @@ import UIKit
 protocol FoodListViewDelegate: AnyObject {
     func didPressHomeButton(sender: UIButton)
     func didPressMapButton(sender: UIButton)
+    func didPressAddButton(sender: UIButton)
 }
 
 class FoodListView: UIView {
@@ -18,6 +19,7 @@ class FoodListView: UIView {
 
     let title = UILabel()
     let header = HeaderStackView()
+    let textField = UITextField()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -43,6 +45,22 @@ class FoodListView: UIView {
         header.addArrangedSubview(backButton)
         header.addArrangedSubview(title)
         header.addArrangedSubview(mapButton)
+
+        let textfieldBackgound = UIView()
+        addSubview(textfieldBackgound, anchors: [.leading(0), .trailing(0), .height(57)])
+        textfieldBackgound.backgroundColor = .white
+        textfieldBackgound.attach(.bottom, to: title, constant: 50)
+
+        textfieldBackgound.addSubview(textField, anchors: [.top(0), .trailing(-55), .bottom(0), .leading(10)])
+        textField.backgroundColor = .white
+        textField.placeholder = NSLocalizedString("placeholder", comment: "")
+        textField.keyboardType = .default
+        textField.returnKeyType = .default
+
+        let addButton = UIButton()
+        addButton.setImage(UIImage(named: "textAdd"), for: .normal)
+        textfieldBackgound.addSubview(addButton, anchors: [.top(10), .trailing(-20), .width(35), .height(35)])
+        addButton.addTarget(self, action: #selector(pressAddButton), for: .touchUpInside)
     }
 
     @objc
@@ -53,6 +71,11 @@ class FoodListView: UIView {
     @objc
     func pressMapButton(sender: UIButton) {
         delegate?.didPressMapButton(sender: sender)
+    }
+
+    @objc
+    func pressAddButton(sender: UIButton) {
+        delegate?.didPressAddButton(sender: sender)
     }
 
     required init?(coder: NSCoder) {

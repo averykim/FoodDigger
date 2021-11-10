@@ -20,10 +20,12 @@ class FoodListViewModel {
     let network = Network()
     let privateKey = PrivateKey()
     var restaurantInfo: [MapInfoModel]
+    var selectedRestaurant: [String]
 
     init(cuisine: String) {
         self.cuisineName = cuisine
         restaurantInfo = []
+        selectedRestaurant = []
     }
 
     func callYelpAPI() {
@@ -93,5 +95,12 @@ class FoodListViewModel {
 
     func moveToMapView() {
         delegate?.goToMapModal(info: restaurantInfo)
+    }
+
+    func addMenu(text: String?) {
+        guard text != "", let menu = text else {
+            return
+        }
+        selectedRestaurant.append(menu)
     }
 }
