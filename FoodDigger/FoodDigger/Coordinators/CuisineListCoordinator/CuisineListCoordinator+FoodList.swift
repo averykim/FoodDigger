@@ -9,6 +9,6 @@ import UIKit
 
 extension CuisinesListCoordinator: FoodListCoordinatorDelegate {
     func foodListCoordinatorDidFinish() {
-        childCoordinators[FoodListCoordinator] = nil
+        childCoordinators[FoodListCoordinator.self] = nil
     }
 }
