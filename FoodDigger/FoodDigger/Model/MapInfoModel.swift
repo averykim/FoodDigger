@@ -11,5 +11,5 @@ struct MapInfoModel {
     let id: String
     let name: String
     let latitude: Double
-    let logitude: Double
+    let longitude: Double
 }

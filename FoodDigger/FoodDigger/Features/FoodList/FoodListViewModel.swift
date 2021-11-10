@@ -54,7 +54,7 @@ class FoodListViewModel {
                     self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
                                                             name: restaurant.name,
                                                             latitude: restaurant.coordinates.latitude ?? 0.0,
-                                                            logitude: restaurant.coordinates.longitude ?? 0.0))
+                                                            longitude: restaurant.coordinates.longitude ?? 0.0))
                 }
             } catch {
                 print("error: \(error)")
@@ -85,7 +85,7 @@ class FoodListViewModel {
                     self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
                                                             name: restaurant.place_name,
                                                             latitude: Double(restaurant.x ?? "") ?? 0.0,
-                                                            logitude: Double(restaurant.y ?? "") ?? 0.0))
+                                                            longitude: Double(restaurant.y ?? "") ?? 0.0))
                 }
             } catch {
                 print("error: \(error)")
@@ -99,6 +99,17 @@ class FoodListViewModel {
 
     func moveToMapView() {
         delegate?.goToMapModal(info: restaurantInfo)
+    }
+
+    func addSelectedMarkerInfo(restaurantId: [String]) {
+        for id in restaurantId {
+            let info = restaurantInfo.filter{ $0.id == id }
+            let name = info.map({$0.name}).first ?? ""
+            if !selectedRestaurant.contains(name) {
+                selectedRestaurant.append(name)
+            }
+        }
+        observer?.updateSelectedInfo()
     }
 
     func addMenu(text: String?) {

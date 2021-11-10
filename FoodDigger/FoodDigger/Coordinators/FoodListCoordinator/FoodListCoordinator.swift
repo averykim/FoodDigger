@@ -21,22 +21,34 @@ class FoodListCoordinator: Coordinator {
         super.init(navigationController: navigationController)
     }
 
+    private var foodListViewModel: FoodListViewModel?
+
     func start() {
-        let foodListViewModel = FoodListViewModel(cuisine: cuisine)
-        foodListViewModel.delegate = self
-        let foodListViewController = FoodListViewController(viewModel: foodListViewModel)
+        foodListViewModel = FoodListViewModel(cuisine: cuisine)
+        foodListViewModel?.delegate = self
+        let foodListViewController = FoodListViewController(viewModel: foodListViewModel ??
+                                                            FoodListViewModel(cuisine: cuisine))
         navigationController.pushViewController(foodListViewController, animated: true)
     }
 }
 
 extension FoodListCoordinator: FoodListViewModelDelegate {
     func goToMapModal(info: [MapInfoModel]) {
-        //add map modal coordinator
-        print("map modal")
+        let coordinator = MapCoordinator(navigationController: navigationController)
+        childCoordinators[MapCoordinator.self] = coordinator
+        coordinator.delegate = self
+        coordinator.start(info: info)
     }
 
     func goToCuisineListView() {
         navigationController.popToRootViewController(animated: true)
         delegate?.foodListCoordinatorDidFinish()
+    }
+}
+
+extension FoodListCoordinator: MapCoordinatorDelegate {
+    func mapCoordinatorDidFinish(list: [String]) {
+        foodListViewModel?.addSelectedMarkerInfo(restaurantId: list)
+        navigationController.dismiss(animated: true, completion: nil)
     }
 }

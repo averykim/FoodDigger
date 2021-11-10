@@ -31,6 +31,10 @@
 		2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */; };
 		2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */; };
 		2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */; };
+		2EB21782273BA60900B551E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21781273BA60900B551E1 /* MapCoordinator.swift */; };
+		2EB21785273BA66C00B551E1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21784273BA66C00B551E1 /* MapView.swift */; };
+		2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21786273BA67700B551E1 /* MapViewController.swift */; };
+		2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21788273BA68100B551E1 /* MapViewModel.swift */; };
 		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
@@ -64,6 +68,10 @@
 		2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpModel.swift; sourceTree = "<group>"; };
 		2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoModel.swift; sourceTree = "<group>"; };
 		2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfoModel.swift; sourceTree = "<group>"; };
+		2EB21781273BA60900B551E1 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		2EB21784273BA66C00B551E1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2EB21786273BA67700B551E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2EB21788273BA68100B551E1 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 			children = (
 				2E34CEEA267853DA000E90A0 /* CuisineList */,
 				2E1A03A7268AE84700B25CD1 /* FoodList */,
+				2EB21783273BA65700B551E1 /* Map */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -179,7 +188,7 @@
 				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
 				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
 				2EC4029A268D913500AE7B94 /* CuisineListCoordinator */,
-				2E1A03A5268AE82300B25CD1 /* FoodListCoordinator.swift */,
+				2EB21780273BA5C300B551E1 /* FoodListCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -213,6 +222,25 @@
 				2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2EB21780273BA5C300B551E1 /* FoodListCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				2E1A03A5268AE82300B25CD1 /* FoodListCoordinator.swift */,
+				2EB21781273BA60900B551E1 /* MapCoordinator.swift */,
+			);
+			path = FoodListCoordinator;
+			sourceTree = "<group>";
+		};
+		2EB21783273BA65700B551E1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				2EB21788273BA68100B551E1 /* MapViewModel.swift */,
+				2EB21786273BA67700B551E1 /* MapViewController.swift */,
+				2EB21784273BA66C00B551E1 /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		2EC4029A268D913500AE7B94 /* CuisineListCoordinator */ = {
@@ -357,20 +385,24 @@
 				2EC4029D268D995200AE7B94 /* Private.swift in Sources */,
 				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
+				2EB21782273BA60900B551E1 /* MapCoordinator.swift in Sources */,
 				2E1A03AB268AE86400B25CD1 /* FoodListViewController.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
+				2EB21785273BA66C00B551E1 /* MapView.swift in Sources */,
 				2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */,
 				2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
 				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
 				2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
+				2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
 				2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */,
 				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
 				2E34CEF42679C989000E90A0 /* CuisineListViewModel.swift in Sources */,
 				2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */,
 				2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */,
+				2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
