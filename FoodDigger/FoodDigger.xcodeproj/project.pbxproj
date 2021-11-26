@@ -35,6 +35,7 @@
 		2EB21785273BA66C00B551E1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21784273BA66C00B551E1 /* MapView.swift */; };
 		2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21786273BA67700B551E1 /* MapViewController.swift */; };
 		2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21788273BA68100B551E1 /* MapViewModel.swift */; };
+		2EB21792275182F800B551E1 /* BMJUA_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */; };
 		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
@@ -72,6 +73,7 @@
 		2EB21784273BA66C00B551E1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2EB21786273BA67700B551E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2EB21788273BA68100B551E1 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_ttf.ttf; sourceTree = "<group>"; };
 		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		2E34CEE4267826CE000E90A0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2EB21790275182D300B551E1 /* Fonts */,
 				2E34CEF52679CA38000E90A0 /* AutoLayout */,
 				2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */,
 				2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */,
@@ -241,6 +244,14 @@
 				2EB21784273BA66C00B551E1 /* MapView.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		2EB21790275182D300B551E1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		2EC4029A268D913500AE7B94 /* CuisineListCoordinator */ = {
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E34CEDB26780E34000E90A0 /* LaunchScreen.storyboard in Resources */,
+				2EB21792275182F800B551E1 /* BMJUA_ttf.ttf in Resources */,
 				2E921A5A267C96CD00E7331A /* Localizable.strings in Resources */,
 				2E34CED826780E34000E90A0 /* Assets.xcassets in Resources */,
 			);

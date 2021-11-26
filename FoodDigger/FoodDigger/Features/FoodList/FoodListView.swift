@@ -65,8 +65,9 @@ class FoodListView: UIView {
 
         let nextButton = UIButton()
         addSubview(nextButton, anchors: [.trailing(-50), .bottom(-40), .leading(50)])
-        nextButton.backgroundColor = .black
-        nextButton.setTitle("NEXT", for: .normal)
+        nextButton.setBackgroundImage(UIImage(named: "buttonBackground"), for: .normal)
+        nextButton.setTitle("GO", for: .normal)
+        nextButton.titleLabel?.font = UIFont(name: "BMJUA", size: 28)
         nextButton.setTitleColor(.white, for: .normal)
 
         // list collection view
