@@ -24,7 +24,7 @@ class MapView: UIView {
         addSubview(googleMap, anchors: [.top(0), .trailing(0), .bottom(0), .leading(0)])
 
         let closeButton = UIButton()
-        closeButton.backgroundColor = .white
+        closeButton.backgroundColor = DiggerColor.textFieldColor
         closeButton.setImage(UIImage(named: "close"), for: .normal)
         closeButton.layer.cornerRadius = 5
         addSubview(closeButton, anchors: [.top(50), .trailing(-30), .width(40), .height(40)])
@@ -56,7 +56,7 @@ class MapMarkerInfoWindow: UIView {
         //name label
         addSubview(nameLabel, anchors: [.top(10), .leading(15), .width(124), .height(17)])
         nameLabel.textAlignment = .left
-        nameLabel.textColor = .black
+        nameLabel.textColor = DiggerColor.mainTextColor
         nameLabel.numberOfLines = 2
         nameLabel.clipsToBounds = true
         //add button

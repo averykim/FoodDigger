@@ -41,6 +41,9 @@ class FoodListViewController: UIViewController {
         } else {
             viewModel.callKakaoAPI()
         }
+        if !viewModel.selectedRestaurant.isEmpty {
+            foodListView.nextButton.isEnabled = true
+        }
     }
 }
 
@@ -61,7 +64,13 @@ extension FoodListViewController: FoodListViewDelegate, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         textField.resignFirstResponder()
+        viewModel.addMenu(text: foodListView.textField.text)
+        foodListView.textField.text = nil
         return true
+    }
+
+    func didPressRandomButton(sender: UIButton) {
+        viewModel.moveToGeneratorView()
     }
 }
 
@@ -94,6 +103,7 @@ extension FoodListViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension FoodListViewController: FoodListViewModelObserver {
     func updateSelectedInfo() {
+        foodListView.nextButton.isEnabled = true
         foodListView.restuarantList.reloadData()
     }
 }

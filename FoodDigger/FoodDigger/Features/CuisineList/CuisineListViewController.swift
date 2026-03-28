@@ -60,10 +60,11 @@ extension CuisineListViewController: UICollectionViewDelegate, UICollectionViewD
                                                             for: indexPath) as? CuisineCell else { return UICollectionViewCell() }
 
         let cuisineType = NSLocalizedString(CuisineType.cases[indexPath.row].rawValue, comment: "")
+        cell.thumbnailImg.image = UIImage(named: "\(cuisineType)")
         cell.thumbnail.text = "\(cuisineType)"
 
         if viewModel.cuisines[CuisineType.cases[indexPath.row]] == cuisineType {
-            cell.layer.borderColor = UIColor.red.cgColor
+            cell.layer.borderColor = DiggerColor.headColor.cgColor
         } else {
             cell.layer.borderColor = UIColor.clear.cgColor
         }

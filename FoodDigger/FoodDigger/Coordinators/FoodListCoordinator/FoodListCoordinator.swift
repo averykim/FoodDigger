@@ -9,6 +9,7 @@ import UIKit
 
 protocol FoodListCoordinatorDelegate: AnyObject {
     func foodListCoordinatorDidFinish()
+    func generateCoordinatorDidFinish()
 }
 
 class FoodListCoordinator: Coordinator {
@@ -44,11 +45,26 @@ extension FoodListCoordinator: FoodListViewModelDelegate {
         navigationController.popToRootViewController(animated: true)
         delegate?.foodListCoordinatorDidFinish()
     }
+
+    func goToGeneratorView(list: [String]) {
+        let coordinator = GeneratorCoordinator(navigationController: navigationController,
+                                                        cuisineList: list)
+        childCoordinators[GeneratorCoordinator.self] = coordinator
+        coordinator.delegate = self
+        coordinator.start()
+    }
 }
 
 extension FoodListCoordinator: MapCoordinatorDelegate {
     func mapCoordinatorDidFinish(list: [String]) {
         foodListViewModel?.addSelectedMarkerInfo(restaurantId: list)
         navigationController.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FoodListCoordinator: GeneratorCoordinatorDelegate {
+    func generatorCoordinatorDidFinish() {
+        navigationController.popToRootViewController(animated: true)
+        delegate?.generateCoordinatorDidFinish()
     }
 }

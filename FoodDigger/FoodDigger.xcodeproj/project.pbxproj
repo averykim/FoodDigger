@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,14 +30,17 @@
 		2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85E26A6A3D700E99ADA /* Network.swift */; };
 		2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */; };
 		2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */; };
+		2EA282CA2F7731CC00C5F55A /* DiggerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA282C92F77317600C5F55A /* DiggerColor.swift */; };
 		2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */; };
 		2EB21782273BA60900B551E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21781273BA60900B551E1 /* MapCoordinator.swift */; };
 		2EB21785273BA66C00B551E1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21784273BA66C00B551E1 /* MapView.swift */; };
 		2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21786273BA67700B551E1 /* MapViewController.swift */; };
 		2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21788273BA68100B551E1 /* MapViewModel.swift */; };
 		2EB21792275182F800B551E1 /* BMJUA_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */; };
+		2EB217942751A2C300B551E1 /* GeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */; };
 		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
+		2ECD9EE32F76555800ED6DFE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD9EE22F76554F00ED6DFE /* Location.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,19 +71,26 @@
 		2E9FA85E26A6A3D700E99ADA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpModel.swift; sourceTree = "<group>"; };
 		2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoModel.swift; sourceTree = "<group>"; };
+		2EA282C92F77317600C5F55A /* DiggerColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiggerColor.swift; sourceTree = "<group>"; };
 		2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfoModel.swift; sourceTree = "<group>"; };
 		2EB21781273BA60900B551E1 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		2EB21784273BA66C00B551E1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2EB21786273BA67700B551E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2EB21788273BA68100B551E1 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_ttf.ttf; sourceTree = "<group>"; };
+		2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorCoordinator.swift; sourceTree = "<group>"; };
 		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
+		2ECD9EE22F76554F00ED6DFE /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
 		78F7F295CAF08E1E2ACFAD51 /* Pods_FoodDigger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDigger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A4E491A4F91DA0E64D701F /* Pods-FoodDigger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDigger.debug.xcconfig"; path = "Target Support Files/Pods-FoodDigger/Pods-FoodDigger.debug.xcconfig"; sourceTree = "<group>"; };
 		CDD8A26A6EFAA5BB15FCAAA1 /* Pods-FoodDigger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDigger.release.xcconfig"; path = "Target Support Files/Pods-FoodDigger/Pods-FoodDigger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2E95B1422F1EE7CF0055F515 /* Generator */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Generator; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2E34CEC826780E32000E90A0 /* Frameworks */ = {
@@ -166,6 +176,8 @@
 		2E34CEE4267826CE000E90A0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2EA282C92F77317600C5F55A /* DiggerColor.swift */,
+				2ECD9EE22F76554F00ED6DFE /* Location.swift */,
 				2EB21790275182D300B551E1 /* Fonts */,
 				2E34CEF52679CA38000E90A0 /* AutoLayout */,
 				2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */,
@@ -178,6 +190,7 @@
 		2E34CEE5267826E2000E90A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				2E95B1422F1EE7CF0055F515 /* Generator */,
 				2E34CEEA267853DA000E90A0 /* CuisineList */,
 				2E1A03A7268AE84700B25CD1 /* FoodList */,
 				2EB21783273BA65700B551E1 /* Map */,
@@ -192,6 +205,7 @@
 				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
 				2EC4029A268D913500AE7B94 /* CuisineListCoordinator */,
 				2EB21780273BA5C300B551E1 /* FoodListCoordinator */,
+				2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -289,6 +303,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				2E95B1422F1EE7CF0055F515 /* Generator */,
+			);
 			name = FoodDigger;
 			productName = FoodDigger;
 			productReference = 2E34CECB26780E32000E90A0 /* FoodDigger.app */;
@@ -372,9 +389,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FoodDigger/Pods-FoodDigger-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FoodDigger/Pods-FoodDigger-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -392,8 +413,10 @@
 				2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */,
 				2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */,
 				2E1A03AD268AE87100B25CD1 /* FoodListViewModel.swift in Sources */,
+				2ECD9EE32F76555800ED6DFE /* Location.swift in Sources */,
 				2E1A03A9268AE85800B25CD1 /* FoodListView.swift in Sources */,
 				2E1A03A6268AE82300B25CD1 /* FoodListCoordinator.swift in Sources */,
+				2EA282CA2F7731CC00C5F55A /* DiggerColor.swift in Sources */,
 				2EC4029D268D995200AE7B94 /* Private.swift in Sources */,
 				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
@@ -408,6 +431,7 @@
 				2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
 				2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */,
+				2EB217942751A2C300B551E1 /* GeneratorCoordinator.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
 				2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */,
 				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
@@ -588,6 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X53TMDCQTL;
 				INFOPLIST_FILE = FoodDigger/App/Info.plist;
@@ -597,6 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jihye.FoodDigger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

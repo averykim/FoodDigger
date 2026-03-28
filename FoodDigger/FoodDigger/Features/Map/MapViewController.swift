@@ -7,12 +7,12 @@
 
 import UIKit
 import GoogleMaps
+import CoreLocation
 
 class MapViewController: UIViewController {
 
     let mapView = MapView()
     let viewModel: MapViewModel
-    let locationManager = CLLocationManager()
     //Marker
     var tappedMarker = GMSMarker()
     var infoWindow = MapMarkerInfoWindow()
@@ -28,9 +28,20 @@ class MapViewController: UIViewController {
         super.loadView()
         view = mapView
 
-        //WIP: show current location
-        let position = CLLocationCoordinate2D(latitude: 37.786882, longitude: -122.399972)
-        mapView.googleMap.camera = GMSCameraPosition(target: position, zoom: 15)
+        Location.shared.onLocationUpdate = { [weak self] coordinate in
+            let position = GMSCameraPosition(target: coordinate, zoom: 15)
+            self?.mapView.googleMap.animate(to: position)
+        }
+
+        Location.shared.requestLocation()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        displayMarker()
+    }
+
+    private func setupMapStyle() {
         do {
             if let styleURL = Bundle.main.url(forResource: "MapStyle", withExtension: "json") {
                 mapView.googleMap.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
@@ -40,11 +51,6 @@ class MapViewController: UIViewController {
         } catch {
           NSLog("One or more of the map styles failed to load. \(error)")
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        displayMarker()
     }
 
     func displayMarker() {
@@ -120,6 +126,8 @@ extension MapViewController: GMSMapViewDelegate {
 
 extension MapViewController: MapViewDelegate {
     func didPressCloseButton(sender: UIButton) {
+        mapView.googleMap.delegate = nil
+        mapView.googleMap.clear()
         viewModel.closeMapView()
     }
 }

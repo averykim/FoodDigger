@@ -11,6 +11,7 @@ protocol FoodListViewDelegate: AnyObject {
     func didPressHomeButton(sender: UIButton)
     func didPressMapButton(sender: UIButton)
     func didPressAddButton(sender: UIButton)
+    func didPressRandomButton(sender:UIButton)
 }
 
 class FoodListView: UIView {
@@ -20,13 +21,14 @@ class FoodListView: UIView {
     let title = UILabel()
     let header = HeaderStackView()
     let textField = UITextField()
+    let nextButton = UIButton()
     let restuarantList = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = DiggerColor.mainBackgroundColor
         title.textAlignment = .center
-        title.textColor = .brown
+        title.textColor = DiggerColor.mainTextColor
         title.numberOfLines = 2
 
         let backButton = UIButton()
@@ -49,26 +51,31 @@ class FoodListView: UIView {
 
         let textfieldBackgound = UIView()
         addSubview(textfieldBackgound, anchors: [.leading(0), .trailing(0), .height(57)])
-        textfieldBackgound.backgroundColor = .white
+        textfieldBackgound.backgroundColor = DiggerColor.textFieldColor
         textfieldBackgound.attach(.bottom, to: title, constant: 50)
 
         textfieldBackgound.addSubview(textField, anchors: [.top(0), .trailing(-55), .bottom(0), .leading(10)])
-        textField.backgroundColor = .white
-        textField.placeholder = NSLocalizedString("placeholder", comment: "")
+        textField.backgroundColor = DiggerColor.textFieldColor
+        textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("placeholder", comment: ""),
+                                                             attributes: [NSAttributedString.Key.foregroundColor: DiggerColor.mainTextColor])
+        textField.textColor = DiggerColor.mainTextColor
         textField.keyboardType = .default
-        textField.returnKeyType = .default
+        textField.returnKeyType = .done
 
         let addButton = UIButton()
         addButton.setImage(UIImage(named: "textAdd"), for: .normal)
+        addButton.backgroundColor = DiggerColor.textFieldColor
         textfieldBackgound.addSubview(addButton, anchors: [.top(10), .trailing(-20), .width(35), .height(35)])
         addButton.addTarget(self, action: #selector(pressAddButton), for: .touchUpInside)
 
-        let nextButton = UIButton()
+        //next button
         addSubview(nextButton, anchors: [.trailing(-50), .bottom(-40), .leading(50)])
         nextButton.setBackgroundImage(UIImage(named: "buttonBackground"), for: .normal)
-        nextButton.setTitle("GO", for: .normal)
+        nextButton.setTitle("GET", for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "BMJUA", size: 28)
-        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.setTitleColor(DiggerColor.mainTextColor, for: .normal)
+        nextButton.isEnabled = false
+        nextButton.addTarget(self, action: #selector(pressRandomButton), for: .touchUpInside)
 
         // list collection view
         addSubview(restuarantList, anchors: [.leading(10), .trailing(-10)])
@@ -93,6 +100,11 @@ class FoodListView: UIView {
         delegate?.didPressAddButton(sender: sender)
     }
 
+    @objc
+    func pressRandomButton(sender: UIButton) {
+        delegate?.didPressRandomButton(sender: sender)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -101,7 +113,7 @@ class FoodListView: UIView {
 class HeaderStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = UIColor(red: 1.00, green: 0.82, blue: 0.29, alpha: 1.00)
+        backgroundColor = DiggerColor.headColor
         alignment = .center
         axis = .horizontal
         distribution = .fillProportionally
@@ -123,9 +135,9 @@ class RestaurantListCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = DiggerColor.textFieldColor
         nameLabel.textAlignment = .left
-        nameLabel.textColor = .black
+        nameLabel.textColor = DiggerColor.mainTextColor
         addSubview(nameLabel, anchors: [.centerX(0), .centerY(0)])
 
         deleteButton.setImage(UIImage(named: "close"), for: .normal)

@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol FoodListViewModelDelegate: AnyObject {
     func goToCuisineListView()
     func goToMapModal(info: [MapInfoModel])
+    func goToGeneratorView(list: [String])
 }
 protocol FoodListViewModelObserver: AnyObject {
     func updateSelectedInfo()
@@ -33,33 +35,41 @@ class FoodListViewModel {
     }
 
     func callYelpAPI() {
-        // WIP: Change latitude and longitude
-        let urlComponents = NSURLComponents(string: "https://api.yelp.com/v3/businesses/search?")
-        urlComponents?.queryItems = [
-            URLQueryItem(name: "latitude", value: "37.786882"),
-            URLQueryItem(name: "longitude", value: "-122.399972"),
-            URLQueryItem(name: "radius", value: "2000"),
-            URLQueryItem(name: "term", value: cuisineName)
-        ]
-        guard let yelpURL = urlComponents?.url else {
-            return
-        }
-        var request = URLRequest(url: yelpURL)
-        request.setValue("Bearer \(privateKey.yelpApi)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        network.send(request) { (result: Result<YelpModel, Error>) in
-            do {
-                let data = try result.get()
-                for restaurant in data.businesses {
-                    self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
-                                                            name: restaurant.name,
-                                                            latitude: restaurant.coordinates.latitude ?? 0.0,
-                                                            longitude: restaurant.coordinates.longitude ?? 0.0))
-                }
-            } catch {
-                print("error: \(error)")
+        Location.shared.onLocationUpdate = { [weak self] coordinate in
+            guard let self = self else {return}
+
+            let urlComponents = NSURLComponents(string: "https://api.yelp.com/v3/businesses/search?")
+
+            urlComponents?.queryItems = [
+                URLQueryItem(name: "latitude", value: "\(coordinate.latitude)"),
+                URLQueryItem(name: "longitude", value: "\(coordinate.longitude)"),
+                URLQueryItem(name: "radius", value: "2000"),
+                URLQueryItem(name: "term", value: "\(self.cuisineName) food")
+            ]
+
+
+            guard let yelpURL = urlComponents?.url else {
+                return
             }
-        }
+            var request = URLRequest(url: yelpURL)
+            request.setValue("Bearer \(privateKey.yelpApi)", forHTTPHeaderField: "Authorization")
+            request.httpMethod = "GET"
+            network.send(request) { (result: Result<YelpModel, Error>) in
+                do {
+                    let data = try result.get()
+                    for restaurant in data.businesses {
+                        self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
+                                                                name: restaurant.name,
+                                                                latitude: restaurant.coordinates.latitude ?? 0.0,
+                                                                longitude: restaurant.coordinates.longitude ?? 0.0))
+                    }
+                } catch {
+                    print("error: \(error)")
+                }
+            }
+        }//locationUpdate
+
+        Location.shared.requestLocation()
     }
 
     func callKakaoAPI() {
@@ -123,5 +133,9 @@ class FoodListViewModel {
     func deleteMenu(menuIndex: Int) {
         selectedRestaurant.remove(at: menuIndex)
         observer?.updateSelectedInfo()
+    }
+
+    func moveToGeneratorView() {
+        delegate?.goToGeneratorView(list: selectedRestaurant)
     }
 }
