@@ -29,6 +29,12 @@ class CuisineListViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.initializeDict()
+        cuisineListView.collectionView.reloadData()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -54,10 +60,11 @@ extension CuisineListViewController: UICollectionViewDelegate, UICollectionViewD
                                                             for: indexPath) as? CuisineCell else { return UICollectionViewCell() }
 
         let cuisineType = NSLocalizedString(CuisineType.cases[indexPath.row].rawValue, comment: "")
+        cell.thumbnailImg.image = UIImage(named: "\(cuisineType)")
         cell.thumbnail.text = "\(cuisineType)"
 
         if viewModel.cuisines[CuisineType.cases[indexPath.row]] == cuisineType {
-            cell.layer.borderColor = UIColor.red.cgColor
+            cell.layer.borderColor = DiggerColor.headColor.cgColor
         } else {
             cell.layer.borderColor = UIColor.clear.cgColor
         }

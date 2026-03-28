@@ -27,6 +27,10 @@ class CuisineListViewModel {
     }
 
     init() {
+        initializeDict()
+    }
+
+    func initializeDict() {
         for type in CuisineType.cases {
             cuisines[type] = NSLocalizedString(type.rawValue, comment: "")
         }

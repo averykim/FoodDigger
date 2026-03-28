@@ -1,0 +1,6 @@
+framework module Pods_FoodDigger {
+  umbrella header "Pods-FoodDigger-umbrella.h"
+
+  export *
+  module * { export * }
+}

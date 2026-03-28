@@ -11,7 +11,7 @@ class RootCoordinator: Coordinator {
 
     func start() {
         let coordinator = CuisinesListCoordinator(navigationController: navigationController)
-        childCoordinators[CuisinesListCoordinator] = coordinator
+        childCoordinators[CuisinesListCoordinator.self] = coordinator
         coordinator.start()
     }
 }
