@@ -8,134 +8,111 @@
 import Foundation
 import CoreLocation
 
-protocol FoodListViewModelDelegate: AnyObject {
-    func goToCuisineListView()
-    func goToMapModal(info: [MapInfoModel])
-    func goToGeneratorView(list: [String])
-}
-protocol FoodListViewModelObserver: AnyObject {
-    func updateSelectedInfo()
-}
-
 class FoodListViewModel {
 
-    weak var delegate: FoodListViewModelDelegate?
-    weak var observer: FoodListViewModelObserver?
+    //coordinator closures
+    var navigateToHome: (()->Void)?
+    var navigateToRandomView: (([RestaurantUIModel]) -> Void)?
+    var navigateToMapModal: ((String) -> Void)?
 
-    let cuisineName: String
-    let network = Network()
-    let privateKey = PrivateKey()
-    var restaurantInfo: [MapInfoModel]
-    var selectedRestaurant: [String]
+    //View closures
+    var onRestaurantsUpdated: (() -> Void)?
+
+    let cuisine: String
+    let network = APIClient()
+
+    private(set) var restaurants: [RestaurantUIModel] = [] {
+        didSet {
+            onRestaurantsUpdated?()
+        }
+    }
+
 
     init(cuisine: String) {
-        self.cuisineName = cuisine
-        restaurantInfo = []
-        selectedRestaurant = []
-    }
-
-    func callYelpAPI() {
-        Location.shared.onLocationUpdate = { [weak self] coordinate in
-            guard let self = self else {return}
-
-            let urlComponents = NSURLComponents(string: "https://api.yelp.com/v3/businesses/search?")
-
-            urlComponents?.queryItems = [
-                URLQueryItem(name: "latitude", value: "\(coordinate.latitude)"),
-                URLQueryItem(name: "longitude", value: "\(coordinate.longitude)"),
-                URLQueryItem(name: "radius", value: "2000"),
-                URLQueryItem(name: "term", value: "\(self.cuisineName) food")
-            ]
-
-
-            guard let yelpURL = urlComponents?.url else {
-                return
-            }
-            var request = URLRequest(url: yelpURL)
-            request.setValue("Bearer \(privateKey.yelpApi)", forHTTPHeaderField: "Authorization")
-            request.httpMethod = "GET"
-            network.send(request) { (result: Result<YelpModel, Error>) in
-                do {
-                    let data = try result.get()
-                    for restaurant in data.businesses {
-                        self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
-                                                                name: restaurant.name,
-                                                                latitude: restaurant.coordinates.latitude ?? 0.0,
-                                                                longitude: restaurant.coordinates.longitude ?? 0.0))
-                    }
-                } catch {
-                    print("error: \(error)")
-                }
-            }
-        }//locationUpdate
-
-        Location.shared.requestLocation()
-    }
-
-    func callKakaoAPI() {
-        //WIP: Change y and x
-        let urlComponents = NSURLComponents(string: "https://dapi.kakao.com/v2/local/search/keyword.json?")
-        urlComponents?.queryItems = [
-            URLQueryItem(name: "y", value: "37.514322572335935"),
-            URLQueryItem(name: "x", value: "127.06283102249932"),
-            URLQueryItem(name: "radius", value: "2000"),
-            URLQueryItem(name: "query", value: NSLocalizedString(cuisineName, comment: ""))
-        ]
-        guard let kakaoURL = urlComponents?.url else {
-            return
-        }
-        var request = URLRequest(url: kakaoURL)
-        request.setValue(privateKey.kakaoApi, forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        network.send(request) { (result: Result<KakaoModel, Error>) in
-            do {
-                let data = try result.get()
-                print("data count: \(data.documents.count)")
-                for restaurant in data.documents {
-                    self.restaurantInfo.append(MapInfoModel(id: restaurant.id,
-                                                            name: restaurant.place_name,
-                                                            latitude: Double(restaurant.x ?? "") ?? 0.0,
-                                                            longitude: Double(restaurant.y ?? "") ?? 0.0))
-                }
-            } catch {
-                print("error: \(error)")
-            }
-        }
+        self.cuisine = cuisine
     }
 
     func moveToCuisineListView() {
-        delegate?.goToCuisineListView()
+        navigateToHome?()
     }
 
     func moveToMapView() {
-        delegate?.goToMapModal(info: restaurantInfo)
-    }
-
-    func addSelectedMarkerInfo(restaurantId: [String]) {
-        for id in restaurantId {
-            let info = restaurantInfo.filter{ $0.id == id }
-            let name = info.map({$0.name}).first ?? ""
-            if !selectedRestaurant.contains(name) {
-                selectedRestaurant.append(name)
-            }
-        }
-        observer?.updateSelectedInfo()
-    }
-
-    func addMenu(text: String?) {
-        guard text != "", let menu = text else {
-            return
-        }
-        selectedRestaurant.append(menu)
-        observer?.updateSelectedInfo()
-    }
-
-    func deleteMenu(menuIndex: Int) {
-        selectedRestaurant.remove(at: menuIndex)
-        observer?.updateSelectedInfo()
+        navigateToMapModal?(cuisine)
     }
 
     func moveToGeneratorView() {
-        delegate?.goToGeneratorView(list: selectedRestaurant)
+        navigateToRandomView?(restaurants)
+    }
+
+    func addSelectedMarkerInfo(markers: [RestaurantModel]) {
+        for marker in markers {
+            if !restaurants.contains(where: { $0.yelpId == marker.id }) {
+                let newItem = RestaurantUIModel(name: marker.name,
+                                                address: marker.address,
+                                                imageUrl: marker.imageUrl,
+                                                rating: marker.rating,
+                                                yelpId: marker.id,
+                                                isCustom: false,
+                                                isSaved: marker.isSaved ?? false)
+                restaurants.append(newItem)
+            }
+        }
+    }
+
+    func addRestaurant(name: String) {
+        let customRestaurant = RestaurantUIModel(name: name,
+                                                 address: "",
+                                                 imageUrl: nil,
+                                                 rating: 0.0,
+                                                 yelpId: nil,
+                                                 isCustom: true,
+                                                 isSaved: false)
+        restaurants.append(customRestaurant)
+    }
+
+    func deleteRestaurant(at index: Int) {
+        restaurants.remove(at: index)
+    }
+
+    private var saveTasks: [String: Task<Void, Never>] = [:]
+
+    func toggleSave(at index: Int) {
+        restaurants[index].isSaved.toggle()
+
+        let targetId = restaurants[index].id
+
+        saveTasks[targetId]?.cancel()
+
+        saveTasks[targetId] = Task {
+            try? await Task.sleep(nanoseconds: 500_000_000)
+
+            if Task.isCancelled {return}
+
+            guard let currentIndex = self.restaurants.firstIndex(where: {$0.id == targetId}) else {return}
+            let finalTarget = self.restaurants[currentIndex]
+
+            if finalTarget.isSaved {
+                do {
+                    let savedData = try await HistoryService().saveToHistory(item: finalTarget)
+                    if let index = self.restaurants.firstIndex(where: {$0.id == targetId}) {
+                        self.restaurants[index].historyId = savedData.id
+                    }
+                } catch {
+                    self.restaurants[currentIndex].isSaved = false
+                }
+            } else {
+                do {
+                    guard finalTarget.yelpId != nil || finalTarget.historyId != nil else {return}
+                    let _ = try await HistoryService().deleteHistory(yelpId: finalTarget.yelpId, historyId: finalTarget.historyId)
+                    if let index = self.restaurants.firstIndex(where: {$0.id == targetId}) {
+                        self.restaurants[index].historyId = nil
+                    }
+
+                } catch {
+                    self.restaurants[currentIndex].isSaved = true
+                }
+            }
+        }//Task
+
     }
 }

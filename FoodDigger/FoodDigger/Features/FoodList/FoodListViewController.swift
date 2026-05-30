@@ -11,16 +11,15 @@ class FoodListViewController: UIViewController {
 
     let foodListView = FoodListView()
     let viewModel: FoodListViewModel
-    private let countryCode = NSLocale.current.regionCode
+
+    private let generator = UIImpactFeedbackGenerator(style: .medium)
 
     init(viewModel: FoodListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        foodListView.delegate = self
         foodListView.textField.delegate = self
         foodListView.restuarantList.delegate = self
         foodListView.restuarantList.dataSource = self
-        viewModel.observer = self
     }
 
     required init?(coder: NSCoder) {
@@ -34,49 +33,48 @@ class FoodListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        foodListView.title.text = viewModel.cuisineName
-        guard let country = countryCode else { return }
-        if country == "US" {
-            viewModel.callYelpAPI()
-        } else {
-            viewModel.callKakaoAPI()
+        foodListView.title.text = viewModel.cuisine
+        bindViewModel()
+        bind()
+    }
+
+    private func bindViewModel() {
+        viewModel.onRestaurantsUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.foodListView.restuarantList.reloadData()
+                if !(self?.viewModel.restaurants.isEmpty ?? false) {
+                    self?.foodListView.nextButton.isEnabled = true
+                }
+            }
         }
-        if !viewModel.selectedRestaurant.isEmpty {
-            foodListView.nextButton.isEnabled = true
+    }
+
+    private func bind() {
+        foodListView.onHomeButtonTapped = {[weak self] in self?.viewModel.moveToCuisineListView()
+        }
+        foodListView.onNextButtonTapped = {[weak self] in self?.viewModel.moveToGeneratorView()
+        }
+        foodListView.onMapButtonTapped = {[weak self] in self?.viewModel.moveToMapView()}
+        foodListView.onAddeButtonTapped = {[weak self] in
+            self?.viewModel.addRestaurant(name: self?.foodListView.textField.text ?? "")
+            self?.foodListView.textField.text = nil
         }
     }
 }
 
-extension FoodListViewController: FoodListViewDelegate, UITextFieldDelegate {
-    func didPressMapButton(sender: UIButton) {
-        viewModel.moveToMapView()
-    }
-
-    func didPressHomeButton(sender: UIButton) {
-        viewModel.moveToCuisineListView()
-    }
-
-    func didPressAddButton(sender: UIButton) {
-        viewModel.addMenu(text: foodListView.textField.text)
-        foodListView.textField.text = nil
-    }
-
+extension FoodListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         textField.resignFirstResponder()
-        viewModel.addMenu(text: foodListView.textField.text)
+        viewModel.addRestaurant(name: foodListView.textField.text ?? "")
         foodListView.textField.text = nil
         return true
-    }
-
-    func didPressRandomButton(sender: UIButton) {
-        viewModel.moveToGeneratorView()
     }
 }
 
 extension FoodListViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.selectedRestaurant.count
+        return viewModel.restaurants.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -89,21 +87,23 @@ extension FoodListViewController: UICollectionViewDataSource, UICollectionViewDe
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as? RestaurantListCell else {
             return UICollectionViewCell()
         }
-        cell.nameLabel.text = "\(viewModel.selectedRestaurant[indexPath.row])"
+        cell.nameLabel.text = "\(viewModel.restaurants[indexPath.row].name)"
+        cell.toggleHeartButton(viewModel.restaurants[indexPath.row].isSaved)
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
+        cell.heartButton.tag = indexPath.row
+        cell.heartButton.addTarget(self, action: #selector(heartCell(sender:)), for: .touchUpInside)
         return cell
     }
 
     @objc
-    func deleteCell(sender: UIButton) {
-        viewModel.deleteMenu(menuIndex: sender.tag)
+    func heartCell(sender: UIButton) {
+        generator.impactOccurred()
+        viewModel.toggleSave(at: sender.tag)
     }
-}
 
-extension FoodListViewController: FoodListViewModelObserver {
-    func updateSelectedInfo() {
-        foodListView.nextButton.isEnabled = true
-        foodListView.restuarantList.reloadData()
+    @objc
+    func deleteCell(sender: UIButton) {
+        viewModel.deleteRestaurant(at: sender.tag)
     }
 }

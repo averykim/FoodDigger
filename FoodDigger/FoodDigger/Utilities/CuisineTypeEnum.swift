@@ -12,10 +12,10 @@ enum CuisineType: String {
     case european
     case japanese
     case chinese
-    case southeastAsian
+    case fastfood
     case vegan
     case dessert
 
     static let cases: [CuisineType] = [.korean, .european, .japanese,
-                                       .chinese, .southeastAsian, .vegan, .dessert]
+                                       .chinese, .fastfood, .vegan, .dessert]
 }

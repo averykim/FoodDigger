@@ -15,13 +15,13 @@ class MapViewController: UIViewController {
     let viewModel: MapViewModel
     //Marker
     var tappedMarker = GMSMarker()
-    var infoWindow = MapMarkerInfoWindow()
+    let detailBottomView = MapMarkerInfoWindow()
+    var bottomConstraint: NSLayoutConstraint!
 
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         mapView.googleMap.delegate = self
-        mapView.delegate = self
     }
 
     override func loadView() {
@@ -38,7 +38,37 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayMarker()
+        setupBottomView()
+        bind()
+    }
+
+    private func bind() {
+        mapView.onCloseTapped = {[weak self] in
+            self?.mapView.googleMap.delegate = nil
+            self?.mapView.googleMap.clear()
+            self?.viewModel.closeMapView()
+        }
+
+        viewModel.onRestaruantsUpdated = {[weak self] in
+            DispatchQueue.main.async {
+                self?.mapView.googleMap.clear()
+                self?.viewModel.markers.forEach {
+                    restaurant in self?.displayMarker(for: restaurant)}
+            }
+        }
+    }
+
+    private func setupBottomView() {
+        view.addSubview(detailBottomView)
+        detailBottomView.translatesAutoresizingMaskIntoConstraints = false
+        bottomConstraint = detailBottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200)
+
+        NSLayoutConstraint.activate([
+            detailBottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailBottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailBottomView.heightAnchor.constraint(equalToConstant: 200),
+            bottomConstraint
+        ])
     }
 
     private func setupMapStyle() {
@@ -53,16 +83,21 @@ class MapViewController: UIViewController {
         }
     }
 
-    func displayMarker() {
-        guard let markerImage = UIImage(named: "markerIcon") else { return }
-        for info in viewModel.markerInfo {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: info.latitude,
-                                                     longitude: info.longitude)
-            marker.icon = setImageSize(image: markerImage, scaledToSize: CGSize(width: 47, height: 55))
-            marker.map = mapView.googleMap
-            marker.userData = info
+    func displayMarker(for info: RestaurantModel) {
+        guard let markerImage = UIImage(named: "markerIcon") else {
+            let fallbackMarker = GMSMarker()
+            fallbackMarker.position = CLLocationCoordinate2D(latitude: info.lat, longitude: info.lon)
+            fallbackMarker.title = info.name
+            fallbackMarker.map = mapView.googleMap
+            return
         }
+
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: info.lat,
+                                                 longitude: info.lon)
+        marker.icon = setImageSize(image: markerImage, scaledToSize: CGSize(width: 47, height: 55))
+        marker.userData = info
+        marker.map = mapView.googleMap
     }
 
     private func setImageSize(image: UIImage, scaledToSize newSize: CGSize) -> UIImage {
@@ -83,51 +118,33 @@ extension MapViewController: GMSMapViewDelegate {
         return UIView()
     }
 
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        let lat = position.target.latitude
+        let lon = position.target.longitude
+        viewModel.fetchNearbyRestaurants(lat: lat, lon: lon, category: viewModel.cuisine.lowercased())
+    }
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let tappedMarkerInfo = marker.userData as? MapInfoModel else {
-            return false
+        guard let restaurant = marker.userData as? RestaurantModel else { return false }
+
+        detailBottomView.updateData(with: restaurant)
+
+        bottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+
+        detailBottomView.onAddTapped = {[weak self] in
+            self?.viewModel.addMarker(marker: restaurant)
         }
 
-        tappedMarker = marker
-        infoWindow.removeFromSuperview()
-        infoWindow = MapMarkerInfoWindow()
-        infoWindow.nameLabel.text = tappedMarkerInfo.name
-        infoWindow.addButton.addTarget(self, action: #selector(pressAddButton), for: .touchUpInside)
-        infoWindow.center = mapView.projection.point(for: marker.position)
-        infoWindow.center.x += 70
-        infoWindow.center.y -= 70
-
-        self.view.addSubview(infoWindow, anchors: [.centerX(0), .centerY(0), .width(200), .height(54)])
-        return false
-    }
-
-    @objc
-    func pressAddButton() {
-        guard let tappedMarkerInfo = tappedMarker.userData as? MapInfoModel else {
-            return
-        }
-        viewModel.addMarker(id: tappedMarkerInfo.id)
-    }
-
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        if (tappedMarker.userData != nil){
-            let location = CLLocationCoordinate2D(latitude: tappedMarker.position.latitude,
-                                                  longitude: tappedMarker.position.longitude)
-            infoWindow.center = mapView.projection.point(for: location)
-            infoWindow.center.x += 70
-            infoWindow.center.y -= 70
-        }
+        return true
     }
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        infoWindow.removeFromSuperview()
-    }
-}
-
-extension MapViewController: MapViewDelegate {
-    func didPressCloseButton(sender: UIButton) {
-        mapView.googleMap.delegate = nil
-        mapView.googleMap.clear()
-        viewModel.closeMapView()
+        bottomConstraint.constant = 200
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
