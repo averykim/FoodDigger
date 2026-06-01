@@ -27,18 +27,33 @@
 		2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */; };
 		2E921A5A267C96CD00E7331A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E921A58267C96CD00E7331A /* Localizable.strings */; };
 		2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */; };
-		2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA85E26A6A3D700E99ADA /* Network.swift */; };
 		2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */; };
 		2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */; };
 		2EA282CA2F7731CC00C5F55A /* DiggerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA282C92F77317600C5F55A /* DiggerColor.swift */; };
-		2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */; };
+		2EA282F02F8DB02F00C5F55A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA282EF2F8DB02A00C5F55A /* Models.swift */; };
+		2EA283412F96D5A800C5F55A /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283402F96D5A500C5F55A /* HistoryCoordinator.swift */; };
+		2EA2836C2F9A9F9200C5F55A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2836B2F9A9F8A00C5F55A /* LoginView.swift */; };
+		2EA2836E2F9A9F9900C5F55A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2836D2F9A9F9500C5F55A /* LoginViewController.swift */; };
+		2EA283702F9A9FA100C5F55A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2836F2F9A9F9C00C5F55A /* LoginViewModel.swift */; };
+		2EA283722F9AA04A00C5F55A /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283712F9AA04400C5F55A /* AuthCoordinator.swift */; };
+		2EA283752F9AAE2800C5F55A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283742F9AAE2200C5F55A /* RegisterView.swift */; };
+		2EA283772F9AAE3300C5F55A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283762F9AAE2B00C5F55A /* RegisterViewController.swift */; };
+		2EA283792F9AAE3C00C5F55A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283782F9AAE3700C5F55A /* RegisterViewModel.swift */; };
+		2EA2837C2F9AAEA800C5F55A /* FindPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2837B2F9AAEA300C5F55A /* FindPasswordView.swift */; };
+		2EA2837E2F9AAEB200C5F55A /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2837D2F9AAEAC00C5F55A /* FindPasswordViewController.swift */; };
+		2EA283802F9AAEBC00C5F55A /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2837F2F9AAEB500C5F55A /* FindPasswordViewModel.swift */; };
+		2EA283822FA2BB0E00C5F55A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283812FA2BB0800C5F55A /* InputView.swift */; };
+		2EA283852FAD61CD00C5F55A /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283842FAD61C500C5F55A /* ChangePasswordView.swift */; };
+		2EA283872FAD61D700C5F55A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283862FAD61D100C5F55A /* ChangePasswordViewController.swift */; };
+		2EA283892FAD61DE00C5F55A /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA283882FAD61DA00C5F55A /* ChangePasswordViewModel.swift */; };
+		2EA2838C2FB527F300C5F55A /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2838B2FB527EA00C5F55A /* ImageCacheManager.swift */; };
+		2EA2838E2FB5280D00C5F55A /* CacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2838D2FB527FC00C5F55A /* CacheImageView.swift */; };
 		2EB21782273BA60900B551E1 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21781273BA60900B551E1 /* MapCoordinator.swift */; };
 		2EB21785273BA66C00B551E1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21784273BA66C00B551E1 /* MapView.swift */; };
 		2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21786273BA67700B551E1 /* MapViewController.swift */; };
 		2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21788273BA68100B551E1 /* MapViewModel.swift */; };
 		2EB21792275182F800B551E1 /* BMJUA_ttf.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */; };
 		2EB217942751A2C300B551E1 /* GeneratorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */; };
-		2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */; };
 		2EC4029D268D995200AE7B94 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4029C268D995200AE7B94 /* Private.swift */; };
 		2ECD9EE32F76555800ED6DFE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECD9EE22F76554F00ED6DFE /* Location.swift */; };
 		2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */; };
@@ -68,18 +83,33 @@
 		2E921A59267C96CD00E7331A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = FoodDigger/Base.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		2E921A5B267C96DB00E7331A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ../ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
-		2E9FA85E26A6A3D700E99ADA /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpModel.swift; sourceTree = "<group>"; };
 		2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoModel.swift; sourceTree = "<group>"; };
 		2EA282C92F77317600C5F55A /* DiggerColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiggerColor.swift; sourceTree = "<group>"; };
-		2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfoModel.swift; sourceTree = "<group>"; };
+		2EA282EF2F8DB02A00C5F55A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		2EA283402F96D5A500C5F55A /* HistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
+		2EA2836B2F9A9F8A00C5F55A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2EA2836D2F9A9F9500C5F55A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2EA2836F2F9A9F9C00C5F55A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2EA283712F9AA04400C5F55A /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		2EA283742F9AAE2200C5F55A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		2EA283762F9AAE2B00C5F55A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2EA283782F9AAE3700C5F55A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		2EA2837B2F9AAEA300C5F55A /* FindPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordView.swift; sourceTree = "<group>"; };
+		2EA2837D2F9AAEAC00C5F55A /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
+		2EA2837F2F9AAEB500C5F55A /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
+		2EA283812FA2BB0800C5F55A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		2EA283842FAD61C500C5F55A /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		2EA283862FAD61D100C5F55A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		2EA283882FAD61DA00C5F55A /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		2EA2838B2FB527EA00C5F55A /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		2EA2838D2FB527FC00C5F55A /* CacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageView.swift; sourceTree = "<group>"; };
 		2EB21781273BA60900B551E1 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		2EB21784273BA66C00B551E1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2EB21786273BA67700B551E1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2EB21788273BA68100B551E1 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2EB21791275182F500B551E1 /* BMJUA_ttf.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMJUA_ttf.ttf; sourceTree = "<group>"; };
 		2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorCoordinator.swift; sourceTree = "<group>"; };
-		2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CuisineListCoordinator+FoodList.swift"; sourceTree = "<group>"; };
 		2EC4029C268D995200AE7B94 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		2ECD9EE22F76554F00ED6DFE /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineTypeEnum.swift; sourceTree = "<group>"; };
@@ -90,6 +120,8 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2E95B1422F1EE7CF0055F515 /* Generator */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Generator; sourceTree = "<group>"; };
+		2EA282DD2F89ADE700C5F55A /* NetworkManager */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NetworkManager; sourceTree = "<group>"; };
+		2EA283372F96D49C00C5F55A /* HistoryModal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HistoryModal; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +175,7 @@
 		2E34CECD26780E32000E90A0 /* FoodDigger */ = {
 			isa = PBXGroup;
 			children = (
+				2EA282DD2F89ADE700C5F55A /* NetworkManager */,
 				2E34CEE226781C07000E90A0 /* App */,
 				2E34CEE32678208B000E90A0 /* Resources */,
 				2E34CEE4267826CE000E90A0 /* Utilities */,
@@ -176,13 +209,14 @@
 		2E34CEE4267826CE000E90A0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2EA2838A2FB527DB00C5F55A /* ImageManager */,
+				2EA283812FA2BB0800C5F55A /* InputView.swift */,
 				2EA282C92F77317600C5F55A /* DiggerColor.swift */,
 				2ECD9EE22F76554F00ED6DFE /* Location.swift */,
 				2EB21790275182D300B551E1 /* Fonts */,
 				2E34CEF52679CA38000E90A0 /* AutoLayout */,
 				2E34CEED26786D15000E90A0 /* CoordinatorDictionary.swift */,
 				2EF9D46E2681C90A004B6C29 /* CuisineTypeEnum.swift */,
-				2E9FA85E26A6A3D700E99ADA /* Network.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -190,6 +224,8 @@
 		2E34CEE5267826E2000E90A0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				2EA2836A2F9A9E2700C5F55A /* Login */,
+				2EA283372F96D49C00C5F55A /* HistoryModal */,
 				2E95B1422F1EE7CF0055F515 /* Generator */,
 				2E34CEEA267853DA000E90A0 /* CuisineList */,
 				2E1A03A7268AE84700B25CD1 /* FoodList */,
@@ -203,9 +239,11 @@
 			children = (
 				2E34CEEB26786BCA000E90A0 /* Coordinator.swift */,
 				2E34CEFC2679DD65000E90A0 /* RootCoordinator.swift */,
+				2EA283712F9AA04400C5F55A /* AuthCoordinator.swift */,
 				2EC4029A268D913500AE7B94 /* CuisineListCoordinator */,
 				2EB21780273BA5C300B551E1 /* FoodListCoordinator */,
 				2EB217932751A2C300B551E1 /* GeneratorCoordinator.swift */,
+				2EA283402F96D5A500C5F55A /* HistoryCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -233,12 +271,64 @@
 		2E9FA85B26A6A38200E99ADA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2EA282EF2F8DB02A00C5F55A /* Models.swift */,
 				2E9FA85C26A6A3AE00E99ADA /* CommonModel.swift */,
 				2E9FA86026A6A5BD00E99ADA /* YelpModel.swift */,
 				2E9FA86226A6A5CE00E99ADA /* KakaoModel.swift */,
-				2EA9FD9526BE6B8B00540E7C /* MapInfoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2EA2836A2F9A9E2700C5F55A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2EA283832FAD61BC00C5F55A /* ChangePW */,
+				2EA2837A2F9AAE9B00C5F55A /* FindPW */,
+				2EA283732F9AADC300C5F55A /* Register */,
+				2EA2836F2F9A9F9C00C5F55A /* LoginViewModel.swift */,
+				2EA2836D2F9A9F9500C5F55A /* LoginViewController.swift */,
+				2EA2836B2F9A9F8A00C5F55A /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2EA283732F9AADC300C5F55A /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2EA283782F9AAE3700C5F55A /* RegisterViewModel.swift */,
+				2EA283762F9AAE2B00C5F55A /* RegisterViewController.swift */,
+				2EA283742F9AAE2200C5F55A /* RegisterView.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2EA2837A2F9AAE9B00C5F55A /* FindPW */ = {
+			isa = PBXGroup;
+			children = (
+				2EA2837F2F9AAEB500C5F55A /* FindPasswordViewModel.swift */,
+				2EA2837D2F9AAEAC00C5F55A /* FindPasswordViewController.swift */,
+				2EA2837B2F9AAEA300C5F55A /* FindPasswordView.swift */,
+			);
+			path = FindPW;
+			sourceTree = "<group>";
+		};
+		2EA283832FAD61BC00C5F55A /* ChangePW */ = {
+			isa = PBXGroup;
+			children = (
+				2EA283882FAD61DA00C5F55A /* ChangePasswordViewModel.swift */,
+				2EA283862FAD61D100C5F55A /* ChangePasswordViewController.swift */,
+				2EA283842FAD61C500C5F55A /* ChangePasswordView.swift */,
+			);
+			path = ChangePW;
+			sourceTree = "<group>";
+		};
+		2EA2838A2FB527DB00C5F55A /* ImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				2EA2838D2FB527FC00C5F55A /* CacheImageView.swift */,
+				2EA2838B2FB527EA00C5F55A /* ImageCacheManager.swift */,
+			);
+			path = ImageManager;
 			sourceTree = "<group>";
 		};
 		2EB21780273BA5C300B551E1 /* FoodListCoordinator */ = {
@@ -272,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				2E34CEFE2679DDD2000E90A0 /* CuisineListCoordinator.swift */,
-				2EC40298268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift */,
 			);
 			path = CuisineListCoordinator;
 			sourceTree = "<group>";
@@ -305,6 +394,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				2E95B1422F1EE7CF0055F515 /* Generator */,
+				2EA282DD2F89ADE700C5F55A /* NetworkManager */,
+				2EA283372F96D49C00C5F55A /* HistoryModal */,
 			);
 			name = FoodDigger;
 			productName = FoodDigger;
@@ -409,36 +500,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA2837C2F9AAEA800C5F55A /* FindPasswordView.swift in Sources */,
 				2E34CEF72679CA55000E90A0 /* LayoutAnchor.swift in Sources */,
 				2E9FA86326A6A5CE00E99ADA /* KakaoModel.swift in Sources */,
+				2EA2836E2F9A9F9900C5F55A /* LoginViewController.swift in Sources */,
 				2E34CEFB2679CACD000E90A0 /* NSLayoutConstraint+LayoutAnchor.swift in Sources */,
 				2E1A03AD268AE87100B25CD1 /* FoodListViewModel.swift in Sources */,
 				2ECD9EE32F76555800ED6DFE /* Location.swift in Sources */,
 				2E1A03A9268AE85800B25CD1 /* FoodListView.swift in Sources */,
+				2EA282F02F8DB02F00C5F55A /* Models.swift in Sources */,
 				2E1A03A6268AE82300B25CD1 /* FoodListCoordinator.swift in Sources */,
+				2EA283872FAD61D700C5F55A /* ChangePasswordViewController.swift in Sources */,
 				2EA282CA2F7731CC00C5F55A /* DiggerColor.swift in Sources */,
 				2EC4029D268D995200AE7B94 /* Private.swift in Sources */,
+				2EA283892FAD61DE00C5F55A /* ChangePasswordViewModel.swift in Sources */,
+				2EA2837E2F9AAEB200C5F55A /* FindPasswordViewController.swift in Sources */,
 				2E34CEFD2679DD65000E90A0 /* RootCoordinator.swift in Sources */,
 				2E34CEF92679CAAA000E90A0 /* UIView+LayoutAnchor.swift in Sources */,
 				2EB21782273BA60900B551E1 /* MapCoordinator.swift in Sources */,
+				2EA2838E2FB5280D00C5F55A /* CacheImageView.swift in Sources */,
+				2EA283822FA2BB0E00C5F55A /* InputView.swift in Sources */,
 				2E1A03AB268AE86400B25CD1 /* FoodListViewController.swift in Sources */,
+				2EA283702F9A9FA100C5F55A /* LoginViewModel.swift in Sources */,
 				2E34CEEE26786D15000E90A0 /* CoordinatorDictionary.swift in Sources */,
 				2EB21785273BA66C00B551E1 /* MapView.swift in Sources */,
-				2E9FA85F26A6A3D700E99ADA /* Network.swift in Sources */,
 				2E9FA86126A6A5BD00E99ADA /* YelpModel.swift in Sources */,
+				2EA283722F9AA04A00C5F55A /* AuthCoordinator.swift in Sources */,
 				2E34CED326780E32000E90A0 /* CuisineListViewController.swift in Sources */,
 				2E34CEFF2679DDD2000E90A0 /* CuisineListCoordinator.swift in Sources */,
-				2EA9FD9626BE6B8B00540E7C /* MapInfoModel.swift in Sources */,
+				2EA283412F96D5A800C5F55A /* HistoryCoordinator.swift in Sources */,
+				2EA2838C2FB527F300C5F55A /* ImageCacheManager.swift in Sources */,
+				2EA283752F9AAE2800C5F55A /* RegisterView.swift in Sources */,
 				2E34CEF22679C97F000E90A0 /* CuisineListView.swift in Sources */,
 				2EB21787273BA67700B551E1 /* MapViewController.swift in Sources */,
+				2EA283802F9AAEBC00C5F55A /* FindPasswordViewModel.swift in Sources */,
+				2EA283772F9AAE3300C5F55A /* RegisterViewController.swift in Sources */,
 				2EB217942751A2C300B551E1 /* GeneratorCoordinator.swift in Sources */,
 				2E34CECF26780E32000E90A0 /* AppDelegate.swift in Sources */,
+				2EA283852FAD61CD00C5F55A /* ChangePasswordView.swift in Sources */,
 				2E9FA85D26A6A3AE00E99ADA /* CommonModel.swift in Sources */,
 				2E34CEEC26786BCA000E90A0 /* Coordinator.swift in Sources */,
 				2E34CEF42679C989000E90A0 /* CuisineListViewModel.swift in Sources */,
 				2EF9D46F2681C90A004B6C29 /* CuisineTypeEnum.swift in Sources */,
-				2EC40299268D912D00AE7B94 /* CuisineListCoordinator+FoodList.swift in Sources */,
+				2EA2836C2F9A9F9200C5F55A /* LoginView.swift in Sources */,
 				2EB21789273BA68100B551E1 /* MapViewModel.swift in Sources */,
+				2EA283792F9AAE3C00C5F55A /* RegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,26 +7,25 @@
 
 import UIKit
 
-protocol MapCoordinatorDelegate: AnyObject {
-    func mapCoordinatorDidFinish(list: [String])
-}
-
 class MapCoordinator: Coordinator {
 
-    weak var delegate: MapCoordinatorDelegate?
+    var mapModalDidFinish: (([RestaurantModel]) -> Void)?
 
-    func start(info: [MapInfoModel]) {
-        let mapViewModel = MapViewModel(markerInfo: info)
+    let cuisine: String
+    init(navigationController: UINavigationController, cuisine: String) {
+        self.cuisine = cuisine
+        super.init(navigationController: navigationController)
+    }
+    func start() {
+        let mapViewModel = MapViewModel(cuisine)
         let mapViewController  = MapViewController(viewModel: mapViewModel)
-        mapViewModel.delegate = self
         mapViewController.modalPresentationStyle = .fullScreen
         mapViewController.modalTransitionStyle = .crossDissolve
-        navigationController.present(mapViewController, animated: false, completion: nil)
-    }
-}
 
-extension MapCoordinator: MapViewModelDelegate {
-    func dismissMapView(list: [String]) {
-        delegate?.mapCoordinatorDidFinish(list: list)
+        mapViewModel.dismissMapView = {[weak self]  restaurants in
+            self?.mapModalDidFinish?(restaurants)
+            self?.navigationController.dismiss(animated: true, completion: nil)
+        }
+        navigationController.present(mapViewController, animated: false, completion: nil)
     }
 }

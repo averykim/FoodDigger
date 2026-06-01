@@ -7,31 +7,41 @@
 
 import UIKit
 
-protocol CuisineListViewDelegate: AnyObject {
-    func didPressHelpButton(sender: UIButton)
-    func didPressNextButton(sender: UIButton)
-}
-
 class CuisineListView: UIView {
+    
+    var onNextButtonTapped: (() -> Void)?
+    var onAuthButtonTapped: (() -> Void)?
+    var onHistoryButtonTapped: (() -> Void)?
+    var onChangePasswordTapped: (() -> Void)?
+    var onLogoutTapped: (() -> Void)?
 
-    weak var delegate: CuisineListViewDelegate?
     let collectionView = CuisineCollectionView(frame: .zero,
                                                            collectionViewLayout: UICollectionViewFlowLayout())
+    let authButton = UIButton(type: .system)
+    let historyButton = UIButton()
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = DiggerColor.mainBackgroundColor
 
-//        let helpButton = UIButton()
-//        helpButton.backgroundColor = .darkGray
-//        helpButton.layer.cornerRadius = 10
-//        addSubview(helpButton, anchors: [.top(50), .trailing(-30)])
-//        helpButton.addTarget(self, action: #selector(pressHelpButton), for: .touchUpInside)
+        addSubview(authButton, anchors: [.top(60), .trailing(-30)])
+        authButton.addTarget(self, action: #selector(pressAuthButton), for: .touchUpInside)
 
         let logo = UIImageView(image: UIImage(named: "logoName"))
         logo.contentMode = .scaleAspectFit
         addSubview(logo, anchors: [.top(100), .centerX(0), .width(85), .height(50)])
+
         addSubview(collectionView, anchors: [.centerY(0), .trailing(-10),
                                              .leading(10), .height(UIScreen.main.bounds.height / 2)])
+
+        historyButton.backgroundColor = .systemRed.withAlphaComponent(0.1)
+        historyButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        historyButton.tintColor = .systemRed
+        historyButton.layer.cornerRadius = 25
+        historyButton.imageView?.contentMode = .scaleAspectFit
+        historyButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        addSubview(historyButton, anchors: [.width(50), .height(50), .top(60), .leading(30)])
+        historyButton.addTarget(self, action: #selector(pressHistoryButton), for: .touchUpInside)
+
         let nextButton = UIButton()
         nextButton.setBackgroundImage(UIImage(named: "buttonBackground"), for: .normal)
         nextButton.setTitle("START", for: .normal)
@@ -39,17 +49,61 @@ class CuisineListView: UIView {
         nextButton.setTitleColor(DiggerColor.mainTextColor, for: .normal)
         addSubview(nextButton, anchors: [.trailing(-50), .leading(50)])
         nextButton.attach(.top, to: collectionView, constant: 50)
-        nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
     }
 
     @objc
-    func pressHelpButton(sender: UIButton) {
-        delegate?.didPressHelpButton(sender: sender)
+    private func nextButtonAction(){
+        onNextButtonTapped?()
     }
 
     @objc
-    func pressNextButton(sender: UIButton) {
-        delegate?.didPressNextButton(sender: sender)
+    private func pressAuthButton() {
+        onAuthButtonTapped?()
+    }
+
+    @objc
+    private func pressHistoryButton() {
+        onHistoryButtonTapped?()
+    }
+
+    func updateAuthButtonUI(_ state: Bool) {
+        if state {
+            authButton.setTitle(nil, for: .normal)
+            authButton.setAttributedTitle(nil, for: .normal)
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular, scale: .large)
+            let profileImage = UIImage(systemName: "person.crop.circle.fill", withConfiguration: largeConfig)
+            authButton.setImage(profileImage, for: .normal)
+            authButton.tintColor = DiggerColor.mainTextColor
+        } else {
+            authButton.setImage(nil, for: .normal)
+            let loginAttributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "BMJUA", size: 18) ?? UIFont.systemFont(ofSize: 18),
+                .foregroundColor: DiggerColor.mainTextColor,
+                .baselineOffset: 2
+            ]
+            let loginString = NSAttributedString(string: "Login", attributes: loginAttributes)
+            authButton.setAttributedTitle(loginString, for: .normal)
+
+            authButton.menu = nil
+            authButton.showsMenuAsPrimaryAction = false
+        }
+    }
+
+    func setupProfileMenu(name: String) {
+        let displayNameAction = UIAction(title: name, handler: {_ in })
+        let editPasswordAction = UIAction(title: "Edit password", image: UIImage(systemName: "lock.fill"), handler: { _ in
+            self.onChangePasswordTapped?()
+        })
+        let logoutImage = UIImage(systemName: "arrow.right.square")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        let logoutAction = UIAction(title: "Logout", image: logoutImage, handler: { _ in
+            self.onLogoutTapped?()
+        })
+
+        let rootMenu = UIMenu(title: "", options: .displayInline, children: [displayNameAction, editPasswordAction, logoutAction])
+
+        authButton.menu =  rootMenu
+        authButton.showsMenuAsPrimaryAction = true
     }
 
     required init?(coder: NSCoder) {

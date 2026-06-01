@@ -7,16 +7,12 @@
 
 import UIKit
 
-protocol FoodListViewDelegate: AnyObject {
-    func didPressHomeButton(sender: UIButton)
-    func didPressMapButton(sender: UIButton)
-    func didPressAddButton(sender: UIButton)
-    func didPressRandomButton(sender:UIButton)
-}
-
 class FoodListView: UIView {
-
-    weak var delegate: FoodListViewDelegate?
+    //Buttons
+    var onHomeButtonTapped: (() -> Void)?
+    var onNextButtonTapped: (() -> Void)?
+    var onMapButtonTapped: (() -> Void)?
+    var onAddeButtonTapped: (() -> Void)?
 
     let title = UILabel()
     let header = HeaderStackView()
@@ -37,6 +33,7 @@ class FoodListView: UIView {
         backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         backButton.addTarget(self, action: #selector(pressHomeButton), for: .touchUpInside)
 
+
         let mapButton = UIButton()
         mapButton.setImage(UIImage(named: "map"), for: .normal)
         mapButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -49,6 +46,7 @@ class FoodListView: UIView {
         header.addArrangedSubview(title)
         header.addArrangedSubview(mapButton)
 
+
         let textfieldBackgound = UIView()
         addSubview(textfieldBackgound, anchors: [.leading(0), .trailing(0), .height(57)])
         textfieldBackgound.backgroundColor = DiggerColor.textFieldColor
@@ -57,7 +55,7 @@ class FoodListView: UIView {
         textfieldBackgound.addSubview(textField, anchors: [.top(0), .trailing(-55), .bottom(0), .leading(10)])
         textField.backgroundColor = DiggerColor.textFieldColor
         textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("placeholder", comment: ""),
-                                                             attributes: [NSAttributedString.Key.foregroundColor: DiggerColor.mainTextColor])
+                                                             attributes: [NSAttributedString.Key.foregroundColor: DiggerColor.placeholderColor])
         textField.textColor = DiggerColor.mainTextColor
         textField.keyboardType = .default
         textField.returnKeyType = .done
@@ -75,7 +73,7 @@ class FoodListView: UIView {
         nextButton.titleLabel?.font = UIFont(name: "BMJUA", size: 28)
         nextButton.setTitleColor(DiggerColor.mainTextColor, for: .normal)
         nextButton.isEnabled = false
-        nextButton.addTarget(self, action: #selector(pressRandomButton), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(pressNextButton), for: .touchUpInside)
 
         // list collection view
         addSubview(restuarantList, anchors: [.leading(10), .trailing(-10)])
@@ -86,23 +84,23 @@ class FoodListView: UIView {
     }
 
     @objc
-    func pressHomeButton(sender: UIButton) {
-        delegate?.didPressHomeButton(sender: sender)
+    private func pressHomeButton(sender: UIButton) {
+        onHomeButtonTapped?()
+    }
+    @objc
+    private func pressNextButton(){
+        onNextButtonTapped?()
     }
 
     @objc
-    func pressMapButton(sender: UIButton) {
-        delegate?.didPressMapButton(sender: sender)
+    private func pressMapButton() {
+        onMapButtonTapped?()
     }
 
-    @objc
-    func pressAddButton(sender: UIButton) {
-        delegate?.didPressAddButton(sender: sender)
-    }
 
     @objc
-    func pressRandomButton(sender: UIButton) {
-        delegate?.didPressRandomButton(sender: sender)
+    private func pressAddButton() {
+        onAddeButtonTapped?()
     }
 
     required init?(coder: NSCoder) {
@@ -132,21 +130,52 @@ class RestaurantListCell: UICollectionViewCell {
 
     let nameLabel =  UILabel()
     let deleteButton = UIButton()
+    let heartButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = DiggerColor.textFieldColor
+        backgroundColor = DiggerColor.textBoxColor
+        layer.cornerRadius = 16
+        layer.masksToBounds = true
+        layer.shadowColor = DiggerColor.mainTextColor.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.08
+
         nameLabel.textAlignment = .left
         nameLabel.textColor = DiggerColor.mainTextColor
-        addSubview(nameLabel, anchors: [.centerX(0), .centerY(0)])
+        nameLabel.font =  UIFont(name: "BMJUA", size: 18)
+        addSubview(nameLabel, anchors: [.leading(20), .centerY(0)])
 
-        deleteButton.setImage(UIImage(named: "close"), for: .normal)
-        addSubview(deleteButton, anchors: [.top(10), .trailing(-20), .width(33), .height(33)])
+        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        deleteButton.layer.cornerRadius = 18
+        deleteButton.backgroundColor = .systemGray.withAlphaComponent(0.1)
+        deleteButton.tintColor = .systemGray5
+        deleteButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+
+        heartButton.layer.cornerRadius = 18
+        heartButton.backgroundColor = .systemRed.withAlphaComponent(0.1)
+        heartButton.tintColor = .systemRed
+        heartButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        heartButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+
+        let buttonStackView = UIStackView(arrangedSubviews: [heartButton, deleteButton])
+        buttonStackView.axis = .horizontal
+        buttonStackView.spacing = 10
+        buttonStackView.distribution = .fillProportionally
+        addSubview(buttonStackView, anchors: [.centerY(0), .trailing(-15)])
+
 
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOpacity = 0.6
         layer.shadowOffset = .zero
         layer.shadowRadius = 2
+    }
+
+    func toggleHeartButton(_ isSaved:Bool) {
+        let heartImageName = isSaved ? "heart.fill" : "heart"
+        heartButton.setImage(UIImage(systemName: heartImageName), for: .normal)
     }
 
     required init?(coder: NSCoder) {

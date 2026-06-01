@@ -7,28 +7,44 @@
 
 import Foundation
 
-protocol MapViewModelDelegate: AnyObject {
-    func dismissMapView(list: [String])
-}
-
 class MapViewModel {
 
-    weak var delegate: MapViewModelDelegate?
-    let markerInfo: [MapInfoModel]
-    var selectedMarkerList: [String]
+    var dismissMapView: (([RestaurantModel]) -> Void)?
+    var onRestaruantsUpdated: (() ->  Void)?
 
-    init(markerInfo: [MapInfoModel]) {
-        self.markerInfo = markerInfo
-        selectedMarkerList = []
+    var markers: [RestaurantModel] = [] {
+        didSet {
+            onRestaruantsUpdated?()
+        }
     }
 
-    func addMarker(id: String) {
-        if !selectedMarkerList.contains(id) {
-            selectedMarkerList.append(id)
+    var selectedMarkers: [RestaurantModel]
+
+    let cuisine: String
+
+    init(_ cuisine: String) {
+        self.cuisine = cuisine
+        selectedMarkers = []
+    }
+
+    func fetchNearbyRestaurants(lat: Double, lon: Double, category: String) {
+        Task {
+            do {
+                let fetched = try await RestaurantService().getRestaurants(lat: lat, lon: lon, category: category)
+                self.markers = fetched
+            } catch {
+                print("Error to load map data: \(error)")
+            }
+        }
+    }
+
+    func addMarker(marker: RestaurantModel) {
+        if !selectedMarkers.contains(where: {$0.id == marker.id}) {
+            selectedMarkers.append(marker)
         }
     }
 
     func closeMapView() {
-        delegate?.dismissMapView(list: selectedMarkerList)
+        dismissMapView?(selectedMarkers)
     }
 }
