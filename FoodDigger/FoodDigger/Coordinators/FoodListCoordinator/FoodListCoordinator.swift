@@ -7,15 +7,10 @@
 
 import UIKit
 
-protocol FoodListCoordinatorDelegate: AnyObject {
-    func foodListCoordinatorDidFinish()
-    func generateCoordinatorDidFinish()
-}
-
 class FoodListCoordinator: Coordinator {
 
-    weak var delegate: FoodListCoordinatorDelegate?
     let cuisine: String
+//    var backToRootView: (() -> Void)?
 
     init(navigationController: UINavigationController, cuisine: String) {
         self.cuisine = cuisine
@@ -26,45 +21,46 @@ class FoodListCoordinator: Coordinator {
 
     func start() {
         foodListViewModel = FoodListViewModel(cuisine: cuisine)
-        foodListViewModel?.delegate = self
         let foodListViewController = FoodListViewController(viewModel: foodListViewModel ??
                                                             FoodListViewModel(cuisine: cuisine))
+
+        bind()
         navigationController.pushViewController(foodListViewController, animated: true)
     }
-}
 
-extension FoodListCoordinator: FoodListViewModelDelegate {
-    func goToMapModal(info: [MapInfoModel]) {
-        let coordinator = MapCoordinator(navigationController: navigationController)
-        childCoordinators[MapCoordinator.self] = coordinator
-        coordinator.delegate = self
-        coordinator.start(info: info)
+    private func bind() {
+        foodListViewModel?.navigateToHome = {[weak self] in
+            self?.goToHomeView()
+        }
+
+        foodListViewModel?.navigateToRandomView = {[weak self] restaurants in
+            self?.goToGeneratorView(list: restaurants)
+        }
+
+        foodListViewModel?.navigateToMapModal = {[weak self] cuisine in
+            self?.goToMapModal(cuisine: cuisine)
+        }
     }
 
-    func goToCuisineListView() {
+    private func goToHomeView() {
+        childCoordinators[FoodListCoordinator.self] = nil
         navigationController.popToRootViewController(animated: true)
-        delegate?.foodListCoordinatorDidFinish()
     }
 
-    func goToGeneratorView(list: [String]) {
+    private func goToGeneratorView(list: [RestaurantUIModel]) {
         let coordinator = GeneratorCoordinator(navigationController: navigationController,
-                                                        cuisineList: list)
+                                                        restaurants: list)
         childCoordinators[GeneratorCoordinator.self] = coordinator
-        coordinator.delegate = self
         coordinator.start()
     }
-}
 
-extension FoodListCoordinator: MapCoordinatorDelegate {
-    func mapCoordinatorDidFinish(list: [String]) {
-        foodListViewModel?.addSelectedMarkerInfo(restaurantId: list)
-        navigationController.dismiss(animated: true, completion: nil)
-    }
-}
+    private func goToMapModal(cuisine: String) {
+        let coordinator = MapCoordinator(navigationController: navigationController, cuisine: cuisine)
+        childCoordinators[MapCoordinator.self] = coordinator
+        coordinator.start()
 
-extension FoodListCoordinator: GeneratorCoordinatorDelegate {
-    func generatorCoordinatorDidFinish() {
-        navigationController.popToRootViewController(animated: true)
-        delegate?.generateCoordinatorDidFinish()
+        coordinator.mapModalDidFinish = {[weak self] restaurants in
+            self?.foodListViewModel?.addSelectedMarkerInfo(markers: restaurants)
+        }
     }
 }

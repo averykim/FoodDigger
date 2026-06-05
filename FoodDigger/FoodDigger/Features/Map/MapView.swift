@@ -8,14 +8,9 @@
 import UIKit
 import GoogleMaps
 
-protocol MapViewDelegate: AnyObject {
-    func didPressCloseButton(sender: UIButton)
-}
-
 class MapView: UIView {
 
-    weak var delegate: MapViewDelegate?
-
+    var onCloseTapped: (() -> Void)?
     let googleMap = GMSMapView()
 
     override init(frame: CGRect) {
@@ -32,8 +27,8 @@ class MapView: UIView {
     }
 
     @objc
-    func pressCloseButton(sender: UIButton) {
-        delegate?.didPressCloseButton(sender: sender)
+    func pressCloseButton() {
+        onCloseTapped?()
     }
     
     required init?(coder: NSCoder) {
@@ -43,25 +38,77 @@ class MapView: UIView {
 
 class MapMarkerInfoWindow: UIView {
 
-    private let backgroundImage = UIImageView(image: UIImage(named: "markerInfoBox"))
     let nameLabel = UILabel()
+    let ratingLabel = UILabel()
+    let addressLabel = UILabel()
     let addButton = UIButton()
+
+    var onAddTapped: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .clear
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.contentMode = .scaleToFill
-        addSubview(backgroundImage, anchors: [.top(0), .trailing(0), .bottom(0), .leading(0)])
+
         //name label
-        addSubview(nameLabel, anchors: [.top(10), .leading(15), .width(124), .height(17)])
+//        addSubview(nameLabel, anchors: [.top(10), .leading(15), .width(124), .height(17)])
         nameLabel.textAlignment = .left
         nameLabel.textColor = DiggerColor.mainTextColor
+        nameLabel.font = .boldSystemFont(ofSize: 16)
         nameLabel.numberOfLines = 2
         nameLabel.clipsToBounds = true
+        //rating label
+//        addSubview(ratingLabel, anchors: [.top(30), .leading(15), .width(124), .height(17)])
+        ratingLabel.textAlignment = .left
+        ratingLabel.textColor = DiggerColor.mainTextColor
+        ratingLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        ratingLabel.numberOfLines = 1
+        ratingLabel.clipsToBounds = true
+        //addressLabel
+//        addSubview(addressLabel, anchors: [.bottom(-20), .leading(15), .width(200), .height(17)])
+        addressLabel.textAlignment = .left
+        addressLabel.textColor = DiggerColor.mainTextColor
+        addressLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        addressLabel.numberOfLines = 3
+        addressLabel.clipsToBounds = true
+
         //add button
+//        addSubview(addButton, anchors: [.top(10), .trailing(-15), .width(31), .height(31)])
         addButton.setImage(UIImage(named: "markerAdd"), for: .normal)
-        addSubview(addButton, anchors: [.top(5), .trailing(-15), .width(31), .height(31)])
+        addButton.addTarget(self, action: #selector(pressAddButton), for: .touchUpInside)
+        addButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let textStatckView = UIStackView(arrangedSubviews: [nameLabel, ratingLabel, addressLabel])
+        textStatckView.axis = .vertical
+        textStatckView.spacing = 4
+        textStatckView.alignment = .fill
+
+        let mainStackView = UIStackView(arrangedSubviews: [textStatckView, addButton])
+        mainStackView.axis = .horizontal
+        mainStackView.spacing =  16
+        mainStackView.alignment = .center
+        mainStackView.layoutMargins = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+        mainStackView.isLayoutMarginsRelativeArrangement = true
+
+        addSubview(mainStackView, anchors: [.leading(3), .trailing(-3), .top(0), .bottom(-3)])
+        mainStackView.backgroundColor = DiggerColor.mainBackgroundColor
+        mainStackView.layer.cornerRadius = 12
+        mainStackView.layer.shadowColor = UIColor.black.cgColor
+        mainStackView.layer.shadowOpacity = 0.15
+        mainStackView.layer.shadowOffset = .init(width: 0, height: 4)
+        mainStackView.layer.shadowRadius = 8
+    }
+
+    func updateData(with restaurant: RestaurantModel) {
+        nameLabel.text = restaurant.name
+        ratingLabel.text = "⭐️ \(restaurant.rating, default: "")"
+        addressLabel.text = restaurant.address
+    }
+
+    @objc
+    func pressAddButton() {
+        onAddTapped?()
     }
 
     required init?(coder: NSCoder) {

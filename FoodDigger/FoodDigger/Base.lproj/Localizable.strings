@@ -10,7 +10,12 @@
 "european" = "European";
 "japanese" = "Japanese";
 "chinese" = "Chinese";
-"southeastAsian" = "Southeast Asian";
+"fastfood" = "Fast food";
 "vegan" = "Vegan";
 "dessert" = "Dessert";
 "placeholder" = "Please type a restaurant.";
+"passwordBox" = "Please enter your password";
+"passwordConfirmBox" = "Please re-enter your password";
+"emailBox" = "Please enter your email";
+"usernameBox" = "Please enter your name";
+

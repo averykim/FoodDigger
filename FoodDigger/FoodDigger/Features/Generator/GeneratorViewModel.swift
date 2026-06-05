@@ -6,29 +6,58 @@
 //
 
 import UIKit
-//import Foundation
-
-protocol GeneratorViewModelDelegate: AnyObject {
-    func goToHome()
-}
 
 class GeneratorViewModel {
 
-    weak var delegate: GeneratorViewModelDelegate?
+    var navigateToHome: (() -> Void)?
+    var navigateToHistory: (() -> Void)?
 
-    let cuisineList:[String]
+    //view
+    var onRandomResultUpdated: ((String) -> Void)?
 
-    init(cuisineList: [String]) {
-        self.cuisineList = cuisineList
+    let restaurants:[RestaurantUIModel]
+    var finalResult: RestaurantUIModel?
+
+    init(restaurants: [RestaurantUIModel]) {
+        self.restaurants = restaurants
     }
 
-    func randomResult()->String{
-        guard let result = cuisineList.randomElement() else { return "None"}
-        return result
+    func randomResult() {
+        if let result = restaurants.randomElement() {
+            finalResult = result
+            onRandomResultUpdated?(result.name)
+        } else {
+            onRandomResultUpdated?("No candidate")
+        }
     }
 
     func moveToHome() {
-        delegate?.goToHome()
+        navigateToHome?()
+    }
+
+    func moveToExternalMap() {
+        guard let restaurant = finalResult else {return}
+
+        if restaurant.isCustom || restaurant.address.isEmpty {
+            navigateToHome?()
+        }
+
+        guard let encodedName = restaurant.address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+
+        //google map is installed
+        let appURLString = "comgooglemaps://?q=\(encodedName)"
+        //If google map is not installed
+        let webURLString = "https://www.google.com/maps/search/?api=1&query=\(encodedName)"
+
+        guard let appURL = URL(string: appURLString),
+                let webURL = URL(string: webURLString) else { return }
+
+        if UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+        }
+
     }
 }
 

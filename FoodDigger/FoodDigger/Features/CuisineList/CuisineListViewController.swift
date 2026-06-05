@@ -15,7 +15,6 @@ class CuisineListViewController: UIViewController {
     init(viewModel: CuisineListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        cuisineListView.delegate = self
         cuisineListView.collectionView.delegate = self
         cuisineListView.collectionView.dataSource = self
     }
@@ -27,26 +26,47 @@ class CuisineListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindView()
+        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.initializeDict()
+        viewModel.checkLoginStatus()
         cuisineListView.collectionView.reloadData()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-extension CuisineListViewController: CuisineListViewDelegate {
-    func didPressHelpButton(sender: UIButton) {
-        viewModel.moveToHelpView()
+    private func bindView() {
+        cuisineListView.onNextButtonTapped = { [weak self] in self?.viewModel.moveToFoodListView()}
+        cuisineListView.onAuthButtonTapped = {[weak self] in
+            self?.viewModel.moveToAuthView()
+        }
+        cuisineListView.onHistoryButtonTapped = {[weak self] in
+            self?.viewModel.moveToHistoryModal()}
+        cuisineListView.onChangePasswordTapped = {[weak self] in
+            self?.viewModel.moveToPasswordView()
+        }
+        cuisineListView.onLogoutTapped = {[weak self] in
+            self?.viewModel.logout()
+        }
     }
 
-    func didPressNextButton(sender: UIButton) {
-        viewModel.moveToFoodListView()
+    private func bindViewModel() {
+        viewModel.onAuthStateChanged = {[weak self] isLoggedIn in
+            DispatchQueue.main.async {
+                self?.cuisineListView.updateAuthButtonUI(isLoggedIn)
+                self?.cuisineListView.historyButton.isHidden = !isLoggedIn
+            }
+        }
+        viewModel.showProfileMenu = {[weak self] name in
+            DispatchQueue.main.async {
+                self?.cuisineListView.setupProfileMenu(name: name)
+            }
+        }
     }
 }
 
