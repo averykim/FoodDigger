@@ -92,3 +92,9 @@ iOSInjectionProject/
 ## Private
 Private.swift
 Assets.xcassets
+.env
+
+# Virtual Environment
+venv/
+.venv/
+env/
