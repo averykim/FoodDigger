@@ -2,7 +2,7 @@
 > **A location-based random restaurant recommendation service that solves the daily dilemma of "What should I eat today?" in just 1 second.**
 
 <br>
-<video src="https://github.com/user-attachments/assets/foodDigger_Demo.mp4" width="250" autoplay muted loop></video>
+<video src="https://github.com/user-attachments/assets/e0e3010e-9326-4ce0-a64c-27c1b7df1224" width="250" autoplay muted loop></video>
 
 <br>
 ## 📖 Overview
@@ -129,7 +129,7 @@ cd iOS_App
 open FoodDigger.xcodeproj  # Run FoodDigger.xcworkspace if using CocoaPods
 ```
 
-https://github.com/user-attachments/assets/e0e3010e-9326-4ce0-a64c-27c1b7df1224
+
 
 
 
