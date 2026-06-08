@@ -5,6 +5,7 @@
 <video src="https://github.com/user-attachments/assets/e0e3010e-9326-4ce0-a64c-27c1b7df1224" width="250" autoplay muted loop></video>
 
 <br>
+
 ## 📖 Overview
 While there are countless restaurant apps, an overwhelming amount of information often leads to 'decision fatigue'. FoodDigger was designed to eliminate this exact problem. 
 
@@ -121,10 +122,10 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-#### Step 3. Navigate to the iOS project directory and open Xcode
-백엔드 서버가 켜져 있는 상태에서 새로운 터미널 창을 열고 아래를 실행합니다.
+#### Step 3. Build & Run iOS Client
+With the backend server running, open a new terminal window and execute the following.
 ```bash
-# 1. iOS 프로젝트 폴더로 이동하여 Xcode 열기
+# 1. Navigate to the iOS project directory and open Xcode
 cd iOS_App
 open FoodDigger.xcodeproj  # Run FoodDigger.xcworkspace if using CocoaPods
 ```
